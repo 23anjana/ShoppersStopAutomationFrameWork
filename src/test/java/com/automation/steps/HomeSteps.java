@@ -40,4 +40,19 @@ public class HomeSteps {
         homePage.popularBrand();
     }
 
+    @When("user hovers over MAN  and choose Shirts option")
+    public void userHoversOverMANAndChooseShirtsOption() throws InterruptedException {
+        homePage.hoverManOption();
+        Thread.sleep(3000);
+    }
+
+
+    @When("user hovers over KIDS and choose TopWear")
+    public void userHoversOverKIDSAndChooseTopWear() {
+        homePage.hoverKidsOption();
+    }
+
+    @When("user searches for {string} on search bar")
+    public void userSearchesForOnSearchBar(String key) {
+    }
 }

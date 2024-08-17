@@ -3,6 +3,7 @@ package com.automation.pages;
 import com.automation.utils.ConfigReader;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
@@ -22,6 +23,18 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'lg:text')and text()='Stop']")
     WebElement popularBrandStop;
 
+    @FindBy(xpath = "//a[text()='MEN ']")
+    WebElement elementMan;
+
+    @FindBy(xpath = "//li[text()='Shirts']")
+    WebElement elementShirt;
+
+    @FindBy(xpath = "//a[@target='_self' and text()='KIDS']")
+    WebElement elementKid;
+
+    @FindBy(xpath = "//div[text()='Boys']//following-sibling::div//li[text()='Topwear']")
+    WebElement elementTopWear;
+
     public void openWebsite() {
         driver.get(ConfigReader.getConfigValue("website.url"));
     }
@@ -40,7 +53,7 @@ public class HomePage extends BasePage {
         // Calling the search bar function
         clickOnSearchBar();
         searchBar.sendKeys(productName);
-        searchBar.sendKeys(Keys.ENTER);
+        searchBar.sendKeys(Keys.RETURN);
     }
 
     public void trendingSearchProduct() {
@@ -49,5 +62,19 @@ public class HomePage extends BasePage {
 
     public void popularBrand() {
         popularBrandStop.click();
+    }
+
+    public void hoverManOption() {
+        Actions action = new Actions(driver);
+        action.moveToElement(elementMan).build().perform();
+        elementShirt.click();
+
+    }
+
+    public void hoverKidsOption() {
+        Actions action = new Actions(driver);
+        action.moveToElement(elementKid).build().perform();
+        elementTopWear.click();
+
     }
 }
