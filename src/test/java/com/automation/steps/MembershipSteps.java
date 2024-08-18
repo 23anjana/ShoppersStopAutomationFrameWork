@@ -46,7 +46,7 @@ public class MembershipSteps {
 
     @Then("verify the bag empty message {string} displayed")
     public void verifyTheBagEmptyMessageDisplayed(String removeMessage) {
-        Assert.assertEquals(membershipPage.productRemovedSuccessfully(), removeMessage);
+        Assert.assertEquals(membershipPage.isCardRemovedFromBag(), removeMessage);
     }
 
     @When("user clicks on GO TO SHOPPING")

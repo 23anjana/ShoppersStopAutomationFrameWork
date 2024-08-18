@@ -23,9 +23,6 @@ public class MembershipPage extends BasePage {
     @FindBy(xpath = "//img[@alt='plus_icon']/ancestor::button[text()='Description']")
     WebElement productDescription;
 
-    @FindBy(xpath = "//div[text()='Product has been added to bag']")
-    WebElement addedSuccessfully;
-
     @FindBy(xpath = "//p[text()='GET SHOPPING']")
     WebElement getShoppingButton;
 
