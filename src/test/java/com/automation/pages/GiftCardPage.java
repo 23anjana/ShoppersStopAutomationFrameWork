@@ -5,23 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+import java.util.Set;
 
-public class MyAccountPage extends BasePage {
-
-    @FindBy(xpath = "//img[@alt='near-by-store']")
-    WebElement storeIcon;
-
-    @FindBy(xpath = "//div[contains(@class,'md:mb-6') and text()='Stores & Events']")
-    WebElement storeNEventsTitle;
-
-    @FindBy(id = "Select City")
-    WebElement selectCityField;
-
-    @FindBy(xpath = "//li[@value='Hyderabad']")
-    WebElement selectCity;
-
-    @FindBy(xpath = "//div[contains(@class,'md:!text-lg')]")
-    List<WebElement> storeNameList;
+public class GiftCardPage extends BasePage {
 
     @FindBy(xpath = "//div[text()='Gift Card/EGV']")
     WebElement giftCard;
@@ -32,8 +18,8 @@ public class MyAccountPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'rounded-lg')]")
     List<WebElement> giftCardList;
 
-    @FindBy(xpath = "//p[text()='Add to bag']")
-    WebElement giftCardAddToBag;
+    @FindBy(xpath = "//div[contains(@class,'md:grid-cols-3')]")
+    List<WebElement> cardsImage;
 
     @FindBy(id = "First Name")
     WebElement firstName;
@@ -47,22 +33,23 @@ public class MyAccountPage extends BasePage {
     @FindBy(id = "Confirm Email")
     WebElement confirmEmail;
 
-    public void clickOnStoreIcon() {
-        storeIcon.click();
-    }
+    @FindBy(xpath = "//p[text()='Proceed']")
+    WebElement proceedButton;
 
-    public String isOnStorePage() {
-        return storeNEventsTitle.getText();
-    }
+    @FindBy(xpath = "//div[@data-item-type='CartProductCard']")
+    WebElement cardAddedToBag;
 
-    public void chooseCity() {
-        selectCityField.click();
-        selectCity.click();
-    }
+    public void switchWindow() {
+        for (WebElement image : cardsImage) {
+            image.click();
+            String originalWindow = driver.getWindowHandle();
+            Set<String> listOfWindow = driver.getWindowHandles();
 
-    public void printStoreNames() {
-        for(WebElement storeName : storeNameList) {
-            System.out.println(storeName.getText());
+            for (String window : listOfWindow) {
+                if (!window.equals(originalWindow)) {
+                    driver.switchTo().window(window);
+                }
+            }
         }
     }
 
@@ -76,10 +63,11 @@ public class MyAccountPage extends BasePage {
 
     public void clickOnFirstGiftCard() {
         giftCardList.get(0).click();
+        switchWindow();
     }
 
     public void giftCardAddToBag() {
-        giftCardAddToBag.click();
+        productAddToBag();
     }
 
     public void fillDetails() {
@@ -87,5 +75,24 @@ public class MyAccountPage extends BasePage {
         lastName.sendKeys(ConfigReader.getConfigValue("last.name"));
         email.sendKeys(ConfigReader.getConfigValue("email"));
         confirmEmail.sendKeys(ConfigReader.getConfigValue("confirm.email"));
+
+        //click on PROCEED button
+        proceedButton.click();
+    }
+
+    public void clickOnViewBag() {
+        viewBag();
+    }
+
+    public boolean isProductAddedToBag() {
+        return cardAddedToBag.isDisplayed();
+    }
+
+    public void removeCardFromBag() {
+        removeFromBag();
+    }
+
+    public String isCardRemovedSuccessfully() {
+        return productRemovedSuccessfully();
     }
 }

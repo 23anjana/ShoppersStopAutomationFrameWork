@@ -17,23 +17,35 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='css-1j5n2p2']//div[@class='css-1n0rqyi']")
-    List<WebElement> images;
+    @FindBy(xpath = "//p[text()='Add to bag']")
+    WebElement addToBag;
 
-    public void switchWindow() {
-        for (WebElement image : images) {
-            image.click();
-            String originalWindow = driver.getWindowHandle();
-            Set<String> listOfWindow = driver.getWindowHandles();
+    @FindBy(xpath = "(//p[contains(@class,'tracking-sm') and text()='View Bag'])[2]")
+    WebElement viewBag;
 
-            for (String window : listOfWindow) {
-                if (!window.equals(originalWindow)) {
-                    driver.switchTo().window(window);
-                }
-            }
-            driver.close();
-            driver.switchTo().window(originalWindow);
-        }
+    @FindBy(xpath = "//img[@alt='remove product']")
+    WebElement crossSign;
+
+    @FindBy(xpath = "//p[text()='REMOVE']")
+    WebElement removeButton;
+
+    @FindBy(xpath = "//div[text()='Product removed from your cart successfully']")
+    WebElement removeMessage;
+
+    public void productAddToBag() {
+        addToBag.click();
     }
 
+    public void viewBag() {
+        viewBag.click();
+    }
+
+    public void removeFromBag() {
+        crossSign.click();
+        removeButton.click();
+    }
+
+    public String productRemovedSuccessfully() {
+        return removeMessage.getText();
+    }
 }
