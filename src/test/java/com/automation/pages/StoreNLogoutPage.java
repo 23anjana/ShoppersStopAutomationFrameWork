@@ -46,7 +46,7 @@ public class StoreNLogoutPage extends BasePage {
     }
 
     public void printStoreNames() {
-        for(WebElement storeName : storeNameList) {
+        for (WebElement storeName : storeNameList) {
             System.out.println(storeName.getText());
         }
     }

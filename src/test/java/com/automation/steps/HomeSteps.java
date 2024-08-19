@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.HomePage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -41,9 +42,8 @@ public class HomeSteps {
     }
 
     @When("user hovers over MAN  and choose Shirts option")
-    public void userHoversOverMANAndChooseShirtsOption() throws InterruptedException {
+    public void userHoversOverMANAndChooseShirtsOption() {
         homePage.hoverManOption();
-        Thread.sleep(3000);
     }
 
 
@@ -54,5 +54,6 @@ public class HomeSteps {
 
     @When("user searches for {string} on search bar")
     public void userSearchesForOnSearchBar(String key) {
+        homePage.searchItem(ConfigReader.getConfigValue(key));
     }
 }

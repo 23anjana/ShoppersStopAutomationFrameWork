@@ -35,6 +35,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[text()='Boys']//following-sibling::div//li[text()='Topwear']")
     WebElement elementTopWear;
 
+    @FindBy(xpath = "(//p[@data-testid='suggested-search'])[1]")
+    WebElement firstDressElement;
+
     public void openWebsite() {
         driver.get(ConfigReader.getConfigValue("website.url"));
     }
@@ -75,6 +78,11 @@ public class HomePage extends BasePage {
         Actions action = new Actions(driver);
         action.moveToElement(elementKid).build().perform();
         elementTopWear.click();
+    }
+    public void searchItem(String productName){
+        clickOnSearchBar();
+        searchBar.sendKeys(productName);
+        firstDressElement.click();
 
     }
 }

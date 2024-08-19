@@ -1,18 +1,43 @@
 package com.automation.steps;
 
+import com.automation.pages.BasePage;
+import com.automation.pages.ProductDetailsPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 public class ProductDetailsSteps {
-//    @And("user clicks on ADD TO BAG button")
-//    public void userClicksOnADDTOBAGButton() {
-//    }
+    ProductDetailsPage productDetailsPage = new ProductDetailsPage();
 
-    @Then("verify user added product successfully to the bag")
-    public void verifyUserAddedProductSuccessfullyToTheBag() {
+
+    @And("user choose the preferred size from size chart")
+    public void userChooseThePreferredSizeFromSizeChart() {
+        productDetailsPage.clickSizeChart();
+        productDetailsPage.chooseSize();
+    }
+
+    @And("user clicks on close button")
+    public void userClicksOnCloseButton() {
+        productDetailsPage.clickCloseBtn();
     }
 
     @And("user clicks on ADD TO BAG button option")
     public void userClicksOnADDTOBAGButtonOption() {
+        productDetailsPage.clickProductAddToBag();
+    }
+
+    @Then("verify user added product successfully to the bag")
+    public void verifyUserAddedProductSuccessfullyToTheBag() {
+       Assert.assertEquals(productDetailsPage.productAddedSuccessfully(),"Product added to your cart successfully");
+    }
+
+    @And("user remove product from bag")
+    public void userRemoveProductFromBag() {
+        productDetailsPage.clicksRemoveIcon();
+    }
+
+    @Then("verify product is removed successfully from bag")
+    public void verifyProductIsRemovedSuccessfullyFromBag() {
+        Assert.assertEquals(productDetailsPage.isProductRemovedSuccessfully(),"Product removed from your cart successfully");
     }
 }

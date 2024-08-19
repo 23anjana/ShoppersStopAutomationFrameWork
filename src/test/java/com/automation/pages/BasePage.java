@@ -5,13 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BasePage {
     WebDriver driver;
+    static WebDriverWait wait;
 
     public BasePage() {
         this.driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(120));
     }
 
     @FindBy(xpath = "//p[text()='Add to bag']")
@@ -44,5 +50,15 @@ public class BasePage {
 
     public String productRemovedSuccessfully() {
         return removeMessage.getText();
+    }
+    public static boolean isPresent(WebElement element){
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+
     }
 }

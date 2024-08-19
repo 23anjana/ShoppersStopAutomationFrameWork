@@ -27,22 +27,21 @@ public class ProductSteps {
 
     @Then("verify  product page is displayed")
     public void verify_product_page_is_displayed() {
-        Assert.assertEquals(productPage.shirtPageDisplayed(),"SHIRTS");
+        Assert.assertEquals(productPage.productPageDisplayed(),"SHIRTS");
     }
 
     @When("user clicks on sort button")
-    public void user_clicks_on_sort_button() throws InterruptedException {
+    public void user_clicks_on_sort_button()  {
         productPage.sortOption();
     }
 
     @When("user choose the price low to high sort option")
-    public void user_choose_the_price_low_to_high_sort_option() throws InterruptedException {
+    public void user_choose_the_price_low_to_high_sort_option(){
         productPage.sortLowToHigh();
-        Thread.sleep(2000);
     }
 
     @And("user choose the price high to low sort option")
-    public void userChooseThePriceHighToLowSortOption() {
+    public void userChooseThePriceHighToLowSortOption(){
         productPage.sortHighToLow();
     }
 
@@ -57,12 +56,12 @@ public class ProductSteps {
 
     @Then("verify search result page is displayed")
     public void verifySearchResultPageIsDisplayed() {
-
+        Assert.assertEquals(productPage.productPageDisplayed(),"DRESSES");
     }
 
     @When("user choose first product from result page")
     public void userChooseFirstProductFromResultPage() {
-
+       productPage.chooseFirstProduct();
     }
 
 }
