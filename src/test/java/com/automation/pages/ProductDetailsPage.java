@@ -29,7 +29,7 @@ public class ProductDetailsPage extends BasePage {
         clickUsingJavaScriptExecutor(chooseSizeOptions);
     }
 
-    public void clickCloseButton() {
+    public void clickCloseButton(){
         closeButton.click();
     }
 

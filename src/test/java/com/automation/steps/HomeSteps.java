@@ -67,4 +67,8 @@ public class HomeSteps {
         homePage.clickOnStyleHubLink();
     }
 
+    @When("When  user hovers over WOMEN and choose Ethnic Dresses option")
+    public void whenUserHoversOverWOMENAndChooseEthnicDressesOption() {
+        homePage.hoverWomenOption();
+    }
 }

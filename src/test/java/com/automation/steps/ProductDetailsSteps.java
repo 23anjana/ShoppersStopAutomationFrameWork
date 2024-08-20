@@ -1,5 +1,6 @@
 package com.automation.steps;
 
+import com.automation.pages.GiftCardPage;
 import com.automation.pages.ProductDetailsPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -8,6 +9,7 @@ import org.junit.Assert;
 public class ProductDetailsSteps {
 
     ProductDetailsPage productDetailsPage = new ProductDetailsPage();
+    GiftCardPage giftCardPage = new GiftCardPage();
 
 
     @And("user choose the preferred size from size chart")
@@ -23,7 +25,7 @@ public class ProductDetailsSteps {
 
     @And("user clicks on ADD TO BAG button option")
     public void userClicksOnADDTOBAGButtonOption() {
-        //productDetailsPage.clickProductAddToBag();
+        giftCardPage.addToBag();
     }
 
     @Then("verify user added product successfully to the bag")
@@ -38,7 +40,7 @@ public class ProductDetailsSteps {
 
     @Then("verify product is removed successfully from bag")
     public void verifyProductIsRemovedSuccessfullyFromBag() {
-        //Assert.assertEquals(productDetailsPage.isProductRemovedSuccessfully(), "Product removed from your cart successfully");
+        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), "Product removed from your cart successfully");
     }
 
     @Then("verify user added first product successfully into the bag")

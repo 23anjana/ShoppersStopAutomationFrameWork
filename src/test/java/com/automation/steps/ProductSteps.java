@@ -28,7 +28,7 @@ public class ProductSteps {
 
     @Then("verify  product page is displayed")
     public void verify_product_page_is_displayed() {
-        Assert.assertEquals(productPage.productPageDisplayed(),"SHIRTS");
+        Assert.assertEquals(productPage.isShirtPageDisplayed(),"SHIRTS");
     }
 
     @When("user clicks on sort button")
@@ -90,4 +90,8 @@ public class ProductSteps {
         Thread.sleep(2000);
     }
 
+    @Then("verify  result page is displayed")
+    public void verifyResultPageIsDisplayed() {
+        Assert.assertEquals(productPage.isEthnicDressPageDisplayed(),"ETHNIC DRESSES");
+    }
 }

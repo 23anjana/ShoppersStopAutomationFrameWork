@@ -1,6 +1,7 @@
 package com.automation.pages;
 
 import com.automation.utils.ConfigReader;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,6 +48,12 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//div[text()='Style Hub']")
     WebElement styleHub;
+
+    @FindBy(xpath = "//a[text()='WOMEN']")
+    WebElement elementWomen;
+
+    @FindBy(xpath = "//li[text()='Ethnic Dresses']")
+    WebElement ethnicDress;
 
     public void openWebsite() {
 
@@ -127,5 +134,16 @@ public class HomePage extends BasePage {
 
         // Switching to new window
         switchWindow();
+    }
+
+    public void hoverWomenOption(){
+        // Using Actions class to do the hover functionality
+        Actions action = new Actions(driver);
+
+        // Hovers on the element
+        action.moveToElement(elementWomen).build().perform();
+
+        // Clicks the product
+        ethnicDress.click();
     }
 }

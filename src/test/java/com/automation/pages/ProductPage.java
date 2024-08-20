@@ -42,6 +42,12 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//p//div[contains(@class,'non-selectable')]")
     List<WebElement> sizeOptions;
 
+    @FindBy(xpath = "//h1[text()='Shirts']")
+    WebElement shirtTextElement;
+
+    @FindBy(xpath = "//h1[text()='Ethnic Dresses']")
+    WebElement ethnicTextElement;
+
     // Checking if the first product is displayed from a list of products
     public boolean isResultPageDisplayed() {
         return productList.get(0).isDisplayed();
@@ -57,6 +63,10 @@ public class ProductPage extends BasePage {
 
     public String productPageDisplayed() {
         return productText.getText();
+    }
+
+    public  String isShirtPageDisplayed(){
+        return shirtTextElement.getText();
     }
 
     public void sortOption() {
@@ -95,5 +105,9 @@ public class ProductPage extends BasePage {
 
     public void chooseSize() {
         sizeOptions.get(0).click();
+    }
+
+    public String isEthnicDressPageDisplayed(){
+        return  ethnicTextElement.getText();
     }
 }
