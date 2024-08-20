@@ -26,9 +26,7 @@ public class ProductDetailsPage extends BasePage {
     }
 
     public void chooseSize() {
-
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].click();", chooseSizeOptions);
+        clickUsingJavaScriptExecutor(chooseSizeOptions);
     }
 
     public void clickCloseBtn() {

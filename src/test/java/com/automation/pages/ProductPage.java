@@ -11,9 +11,6 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'md:!grid-cols-3')]")
     List<WebElement> productList;
 
-    @FindBy(xpath = "//div[contains(@class,'mb-6 text-lg font-normal')]//h1")
-    WebElement productText;
-
     @FindBy(xpath = "//img[@class='transition-transform duration-500 rotate-0']")
     WebElement sortButton;
 
@@ -36,6 +33,14 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"__next\"]/main/div[1]/div/div[3]/div/div/div[2]/div[3]/div")
     WebElement element;
 
+    @FindBy(tagName = "h1")
+    WebElement productText;
+
+    @FindBy(xpath = "//div[text()='Filters']")
+    WebElement filterElementText;
+
+    @FindBy(xpath = "//p//div[contains(@class,'non-selectable')]")
+    List<WebElement> sizeOptions;
 
     // Checking if the first product is displayed from a list of products
     public boolean isResultPageDisplayed() {
@@ -60,7 +65,6 @@ public class ProductPage extends BasePage {
 
     public void sortLowToHigh() {
         chooseLowToHigh.click();
-
     }
 
     public void sortHighToLow() {
@@ -78,14 +82,14 @@ public class ProductPage extends BasePage {
 
     public void chooseFirstProduct() {
         productImage.get(0).click();
-        String originalWindow = driver.getWindowHandle();
-        Set<String> listOfWindow = driver.getWindowHandles();
+        switchWindow();
+    }
 
-        for (String window : listOfWindow) {
-            if (!window.equals(originalWindow)) {
-                driver.switchTo().window(window);
-            }
-        }
+    public String isFirstProductPageDisplayed() {
+        return  filterElementText.getText();
+    }
 
+    public void chooseSize() {
+        sizeOptions.get(0).click();
     }
 }

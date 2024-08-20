@@ -36,17 +36,6 @@ public class GiftCardPage extends BasePage {
     @FindBy(xpath = "//div[@data-item-type='CartProductCard']")
     WebElement cardAddedToBag;
 
-    public void switchWindow() {
-            String originalWindow = driver.getWindowHandle();
-            Set<String> listOfWindow = driver.getWindowHandles();
-
-            for (String window : listOfWindow) {
-                if (!window.equals(originalWindow)) {
-                    driver.switchTo().window(window);
-                }
-            }
-    }
-
     public void clickOnGiftCardLink() {
         giftCard.click();
     }

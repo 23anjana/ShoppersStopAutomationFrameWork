@@ -23,9 +23,6 @@ public class StyleHubPage extends BasePage {
     @FindBy(xpath = "//div[@data-title='Loading ...']")
     List<WebElement> firstGuideLink;
 
-    @FindBy(xpath = "//div[@class='elementor-image']")
-    WebElement guideDescriptionPageBanner;
-
     @FindBy(xpath = "(//h3[@class='entry-title']/a)[1]")
     WebElement guideTitle;
 

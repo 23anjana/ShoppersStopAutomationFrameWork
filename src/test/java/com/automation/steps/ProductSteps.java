@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.ProductPage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -56,12 +57,37 @@ public class ProductSteps {
 
     @Then("verify search result page is displayed")
     public void verifySearchResultPageIsDisplayed() {
-        Assert.assertEquals(productPage.productPageDisplayed(),"DRESSES");
+        Assert.assertEquals(productPage.productPageDisplayed(),ConfigReader.getConfigValue("product.name").toUpperCase());
     }
 
     @When("user choose first product from result page")
     public void userChooseFirstProductFromResultPage() {
        productPage.chooseFirstProduct();
+    }
+    @Then("verify searched product page is displayed")
+    public void verifySearchedProductPageIsDisplayed() {
+        Assert.assertEquals(productPage.productPageDisplayed(), ConfigReader.getConfigValue("product.first_name"));
+        Assert.assertEquals(productPage.isFirstProductPageDisplayed(),"FILTERS");
+    }
+
+    @When("user choose first product and preferred size of the first product")
+    public void userChooseFirstProductAndPreferredSizeOfTheFirstProduct() throws InterruptedException {
+        productPage.chooseFirstProduct();
+        productPage.chooseSize();
+        Thread.sleep(2000);
+    }
+
+    @Then("verify second product page is displayed")
+    public void verifySecondProductPageIsDisplayed() {
+        Assert.assertEquals(productPage.productPageDisplayed(),ConfigReader.getConfigValue("product.second_name"));
+        Assert.assertEquals(productPage.isFirstProductPageDisplayed(),"FILTERS");
+
+    }
+
+    @When("user choose first product from the second product result page")
+    public void userChooseFirstProductFromTheSecondProductResultPage() throws InterruptedException {
+        productPage.chooseFirstProduct();
+        Thread.sleep(2000);
     }
 
 }

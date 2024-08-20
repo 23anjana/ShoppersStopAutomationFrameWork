@@ -33,17 +33,6 @@ public class MembershipPage extends BasePage {
         return membershipTitle.getText();
     }
 
-    public void switchWindow() {
-            String originalWindow = driver.getWindowHandle();
-            Set<String> listOfWindow = driver.getWindowHandles();
-
-            for (String window : listOfWindow) {
-                if (!window.equals(originalWindow)) {
-                    driver.switchTo().window(window);
-                }
-            }
-    }
-
     public void clickOnBuyNowLink() {
         buyNowLink.click();
         switchWindow();

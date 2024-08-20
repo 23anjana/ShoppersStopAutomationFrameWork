@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
 import java.util.Set;
 
 public class HomePage extends BasePage {
@@ -37,8 +38,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[text()='Boys']//following-sibling::div//li[text()='Topwear']")
     WebElement elementTopWear;
 
-    @FindBy(xpath = "(//p[@data-testid='suggested-search'])[1]")
-    WebElement firstDressElement;
+    @FindBy(xpath = "//p[@data-testid='suggested-search']")
+    List<WebElement> firstProductOption;
 
     @FindBy(xpath = "//img[@alt='near-by-store']")
     WebElement storeIcon;
@@ -92,22 +93,11 @@ public class HomePage extends BasePage {
     public void searchItem(String productName){
         clickOnSearchBar();
         searchBar.sendKeys(productName);
-        firstDressElement.click();
+        firstProductOption.get(0).click();
     }
 
     public void clickOnStoreIcon() {
         storeIcon.click();
-    }
-
-    public void switchWindow() {
-        String originalWindow = driver.getWindowHandle();
-        Set<String> listOfWindow = driver.getWindowHandles();
-
-        for (String window : listOfWindow) {
-            if (!window.equals(originalWindow)) {
-                driver.switchTo().window(window);
-            }
-        }
     }
 
     public void clickOnStyleHubLink() {
