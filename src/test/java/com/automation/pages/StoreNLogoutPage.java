@@ -64,5 +64,4 @@ public class StoreNLogoutPage extends BasePage {
     public String isLogoutSuccessful() {
         return logoutSuccessfulMessage.getText();
     }
-
 }

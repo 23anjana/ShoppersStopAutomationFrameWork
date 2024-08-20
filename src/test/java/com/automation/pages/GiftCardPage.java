@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
-import java.util.Set;
 
 public class GiftCardPage extends BasePage {
 
@@ -18,6 +17,7 @@ public class GiftCardPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'rounded-lg')]")
     List<WebElement> giftCardList;
 
+    // Finding element using id
     @FindBy(id = "First Name")
     WebElement firstName;
 
@@ -36,6 +36,23 @@ public class GiftCardPage extends BasePage {
     @FindBy(xpath = "//div[@data-item-type='CartProductCard']")
     WebElement cardAddedToBag;
 
+    @FindBy(xpath = "//p[text()='Add to bag']")
+    WebElement addToBag;
+
+    @FindBy(xpath = "(//p[contains(@class,'tracking-sm') and text()='View Bag'])[2]")
+    WebElement viewBag;
+
+    @FindBy(xpath = "//img[@alt='remove product']")
+    WebElement crossSign;
+
+    @FindBy(xpath = "//p[text()='REMOVE']")
+    WebElement removeButton;
+
+    @FindBy(xpath = "//div[text()='Product removed from your cart successfully']")
+    WebElement removeMessage;
+
+    // *** Methods ***
+
     public void clickOnGiftCardLink() {
         giftCard.click();
     }
@@ -49,11 +66,13 @@ public class GiftCardPage extends BasePage {
         switchWindow();
     }
 
-    public void giftCardAddToBag() {
-        productAddToBag();
+    public void addToBag() {
+        addToBag.click();
     }
 
     public void fillDetails() {
+
+        // Inputs details from config file to the details field
         firstName.sendKeys(ConfigReader.getConfigValue("first.name"));
         lastName.sendKeys(ConfigReader.getConfigValue("last.name"));
         email.sendKeys(ConfigReader.getConfigValue("email"));
@@ -64,18 +83,19 @@ public class GiftCardPage extends BasePage {
     }
 
     public void clickOnViewBag() {
-        viewBag();
+        viewBag.click();
     }
 
     public boolean isProductAddedToBag() {
         return cardAddedToBag.isDisplayed();
     }
 
-    public void removeCardFromBag() {
-        removeFromBag();
+    public void removeFromBag() {
+        crossSign.click();
+        removeButton.click();
     }
 
-    public String isCardRemovedSuccessfully() {
-        return productRemovedSuccessfully();
+    public String isRemoveSuccessful() {
+        return removeMessage.getText();
     }
 }

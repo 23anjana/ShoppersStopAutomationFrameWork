@@ -29,13 +29,13 @@ public class ProductDetailsPage extends BasePage {
         clickUsingJavaScriptExecutor(chooseSizeOptions);
     }
 
-    public void clickCloseBtn() {
+    public void clickCloseButton() {
         closeButton.click();
     }
 
-    public void clickProductAddToBag() {
-        productAddToBag();
-    }
+//    public void clickProductAddToBag() {
+//        productAddToBag();
+//    }
 
     public String productAddedSuccessfully() {
         return successMessage.getText();
@@ -45,7 +45,7 @@ public class ProductDetailsPage extends BasePage {
         removeMinusIcon.click();
     }
 
-    public String isProductRemovedSuccessfully() {
-        return productRemovedSuccessfully();
-    }
+//    public String isProductRemovedSuccessfully() {
+//        return productRemovedSuccessfully();
+//    }
 }

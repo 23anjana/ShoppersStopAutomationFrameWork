@@ -26,7 +26,7 @@ public class GiftCardSteps {
 
     @When("user clicks on ADD TO BAG")
     public void user_clicks_on_add_to_bag() {
-        giftCardPage.giftCardAddToBag();
+        giftCardPage.addToBag();
     }
 
     @When("user fills all the details and clicks on PROCEED")
@@ -42,11 +42,11 @@ public class GiftCardSteps {
 
     @When("user clicks on the remove")
     public void userClicksOnTheRemove() {
-        giftCardPage.removeCardFromBag();
+        giftCardPage.removeFromBag();
     }
 
     @Then("verify remove message {string} displayed")
     public void verifyRemoveMessageDisplayed(String message) {
-        Assert.assertEquals(giftCardPage.isCardRemovedSuccessfully(), message);
+        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), message);
     }
 }

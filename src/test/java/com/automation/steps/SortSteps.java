@@ -5,7 +5,8 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
 public class SortSteps {
-    SortPage sortPage=new SortPage();
+
+    SortPage sortPage = new SortPage();
 
     @Then("verify product displayed is in sorted order by price low to high")
     public void verifyProductDisplayedIsInSortedOrderByPriceLowToHigh() {

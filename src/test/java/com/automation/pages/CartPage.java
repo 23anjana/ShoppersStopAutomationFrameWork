@@ -11,18 +11,22 @@ public class CartPage extends BasePage {
     @FindBy(xpath = "//img[@alt='shopping-cart']")
     WebElement bagIcon;
 
+    // Finding element using class name
     @FindBy(className = "cart-header__shadow")
     WebElement cartHeader;
 
+    // Finding path of a list of elements
     @FindBy(xpath = "//span[contains(text(),'₹')]")
     List<WebElement> productOriginalPrices;
 
+    // Finding the following sibling
     @FindBy(xpath = "//span[contains(text(),'₹')]/following-sibling::span")
     List<WebElement> discountPercentages;
 
     @FindBy(xpath = "//div[text()='Total Payable amount']/following-sibling::div")
     WebElement totalPayableAmountOnWeb;
 
+    // Finding the following sibling
     @FindBy(xpath = "//div[text()='Your Total Savings']//following-sibling::div[contains(text(),'₹')]")
     WebElement totalSavingsOnWeb;
 
@@ -50,6 +54,7 @@ public class CartPage extends BasePage {
 
         // Calculate price after applying discount offer
         for (int i = 0; i < productOriginalPrices.size(); i++) {
+
             //Original price
             double price = Double.parseDouble(productOriginalPrices.get(i).getText().replace("₹", " "));
 
@@ -80,6 +85,7 @@ public class CartPage extends BasePage {
         double totalSavingsAmountOnWeb = Double.parseDouble(totalSavingsOnWeb.getText().replace("₹", "").replace(",", ""));
         System.out.println("Total Savings Amount on Web: " + totalSavingsAmountOnWeb);
 
+        // Verifying if the estimated and displayed amounts match
         return totalPayablePriceOnWeb == totalPayableAmount
                 && totalSavingsAmountOnWeb == totalSavings;
     }

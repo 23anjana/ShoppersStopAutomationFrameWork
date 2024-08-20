@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class CartSteps {
+
     CartPage cartPage = new CartPage();
 
     @When("user clicks on bag icon")
@@ -15,7 +16,7 @@ public class CartSteps {
 
     @Then("verify user is on cart page")
     public void verifyUserIsOnCartPage() {
-        cartPage.isCartPageDisplayed();
+        Assert.assertTrue(cartPage.isCartPageDisplayed());
     }
 
     @Then("verify item prices display correctly on cart page")

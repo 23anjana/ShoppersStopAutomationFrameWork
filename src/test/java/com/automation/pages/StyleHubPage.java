@@ -43,9 +43,11 @@ public class StyleHubPage extends BasePage {
 
     // *** Search bar methods ***
 
+    // Finding element using css selector
     @FindBy(css = ".search-toggle-li")
     WebElement searchIcon;
 
+    // Finding element using id
     @FindBy(id = "ocean-search-form-1")
     WebElement searchBar;
 
@@ -71,11 +73,12 @@ public class StyleHubPage extends BasePage {
     }
 
     public boolean isStyleGuidePageDisplayed() {
-            String guideName = guideTitle.getText();
-            if(guideName.contains("Guide")) {
-                return true;
-            }
-        return false;
+
+        // Get the title of the guide
+        String guideName = guideTitle.getText();
+
+        // Checks if the title contains the keyword "Guide"
+        return guideName.contains("Guide");
     }
 
     public void clickOnFirstStyleGuideLink() {
@@ -97,11 +100,12 @@ public class StyleHubPage extends BasePage {
     }
 
     public boolean isWatchesGuidePageDisplayed() {
+
+        // Gets the title of the guide
         String watchesGuideName = watchesGuideTitle.getText();
-        if(watchesGuideName.contains("Watch")) {
-            return true;
-        }
-        return false;
+
+        // Checks if the title contains the keyword "Watch"
+        return watchesGuideName.contains("Watch");
     }
 
     public void clickOnFirstWatchGuideLink() {

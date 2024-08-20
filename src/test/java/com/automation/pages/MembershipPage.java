@@ -2,7 +2,6 @@ package com.automation.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import java.util.Set;
 
 public class MembershipPage extends BasePage {
 
@@ -38,21 +37,8 @@ public class MembershipPage extends BasePage {
         switchWindow();
     }
 
-    public void addToBag() {
-        productAddToBag();
-    }
-
     public void readProductDescription() {
         productDescription.click();
-    }
-
-    public void removeMembershipCardFromBag() {
-        viewBag();
-        removeFromBag();
-    }
-
-    public String isCardRemovedFromBag() {
-        return productRemovedSuccessfully();
     }
 
     public void clickOnGetShoppingButton() {

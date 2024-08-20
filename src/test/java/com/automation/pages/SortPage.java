@@ -22,13 +22,6 @@ public class SortPage extends BasePage {
     @FindBy(xpath = "//p[contains(text(),'₹')]/following-sibling::p")
     List<WebElement> discountList;
 
-    public void scroll(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
-    }
-
     public boolean verifyProductDisplayedLowToHigh() {
 //        scroll(scrollUpTo);
 //        Actions actions=new Actions(driver);

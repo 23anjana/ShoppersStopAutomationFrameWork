@@ -1,5 +1,6 @@
 package com.automation.steps;
 
+import com.automation.pages.GiftCardPage;
 import com.automation.pages.MembershipPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,6 +9,7 @@ import org.junit.Assert;
 public class MembershipSteps {
 
     MembershipPage membershipPage = new MembershipPage();
+    GiftCardPage giftCardPage = new GiftCardPage();
 
     @When("user clicks on the First Citizen Club link")
     public void user_clicks_on_the_first_citizen_club_link() {
@@ -31,17 +33,18 @@ public class MembershipSteps {
 
     @When("user clicks on ADD TO BAG button")
     public void user_clicks_on_add_to_bag_button() {
-        membershipPage.addToBag();
+        giftCardPage.addToBag();
     }
 
     @When("user clicks on VIEW BAG and removes card from bag")
     public void userClicksOnVIEWBAGAndRemovesCardFromBag() {
-        membershipPage.removeMembershipCardFromBag();
+        giftCardPage.clickOnViewBag();
+        giftCardPage.removeFromBag();
     }
 
     @Then("verify the bag empty message {string} displayed")
     public void verifyTheBagEmptyMessageDisplayed(String removeMessage) {
-        Assert.assertEquals(membershipPage.isCardRemovedFromBag(), removeMessage);
+        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), removeMessage);
     }
 
     @When("user clicks on GO TO SHOPPING")

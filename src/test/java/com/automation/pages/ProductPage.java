@@ -81,7 +81,11 @@ public class ProductPage extends BasePage {
     }
 
     public void chooseFirstProduct() {
+
+        // Clicks the first product from product list
         productImage.get(0).click();
+
+        //Switching to new window
         switchWindow();
     }
 

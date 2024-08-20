@@ -4,11 +4,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
 import java.util.List;
-import java.util.Set;
 
 public class BeautyStopPage extends BasePage {
 
+    // Finding element using xpath
     @FindBy(xpath = "//span[text()='The Beauty Stop']")
     WebElement theBeautyStopLink;
 
@@ -24,6 +25,7 @@ public class BeautyStopPage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Tell us what are you looking for']")
     WebElement searchBar;
 
+    // Finding element using tag name
     @FindBy(tagName = "h1")
     WebElement resultPageTitle;
 
@@ -60,32 +62,35 @@ public class BeautyStopPage extends BasePage {
     @FindBy(xpath = "//img[@alt='web image SSBeauty']")
     WebElement ssBeautyLogo;
 
-    public void switchWindow() {
-        String originalWindow = driver.getWindowHandle();
-        Set<String> listOfWindow = driver.getWindowHandles();
-
-        for (String window : listOfWindow) {
-            if (!window.equals(originalWindow)) {
-                driver.switchTo().window(window);
-            }
-        }
-    }
-
     public void chooseProductCategory() {
         Actions action = new Actions(driver);
+
+        // Move to the category link and hover over it
         action.moveToElement(categoryLink).build().perform();
+
+        // Move to the sub-category and hover over it
         action.moveToElement(chooseCategory).build().perform();
+
+        // Move to the product and click on it
         action.moveToElement(product).click().perform();
     }
 
     public void clickOnBeautyStopLink() {
         theBeautyStopLink.click();
+
+        // Switching to new window
         switchWindow();
     }
 
     public void searchProduct(String productName) {
+
+        // Click on the search bar
         searchBar.click();
+
+        // Input the product name
         searchBar.sendKeys(productName);
+
+        // Click on enter or return
         searchBar.sendKeys(Keys.RETURN);
     }
 
@@ -94,7 +99,11 @@ public class BeautyStopPage extends BasePage {
     }
 
     public void clickOnFirstProduct() {
+
+        // Clicks on the first product from a list of products displayed
         firstProduct.get(0).click();
+
+        // Switching to new window
         switchWindow();
     }
 
@@ -119,7 +128,11 @@ public class BeautyStopPage extends BasePage {
     }
 
     public void removeProduct() {
+
+        // Clicks on the Remove link
         removeLink.click();
+
+        // Clicks on the Remove button
         removeButton.click();
     }
 
