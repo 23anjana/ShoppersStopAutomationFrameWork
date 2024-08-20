@@ -56,4 +56,15 @@ public class HomeSteps {
     public void userSearchesForOnSearchBar(String key) {
         homePage.searchItem(ConfigReader.getConfigValue(key));
     }
+
+    @When("user clicks on the store icon")
+    public void user_clicks_on_the_store_icon() {
+        homePage.clickOnStoreIcon();
+    }
+
+    @When("user clicks on style hub link")
+    public void user_clicks_on_style_hub_link() {
+        homePage.clickOnStyleHubLink();
+    }
+
 }

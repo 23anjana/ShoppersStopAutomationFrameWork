@@ -1,5 +1,6 @@
 package com.automation.steps;
 
+import com.automation.pages.HomePage;
 import com.automation.pages.StoreNLogoutPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,11 +9,6 @@ import org.junit.Assert;
 public class StoreNLogoutSteps {
 
     StoreNLogoutPage storeNLogoutPage = new StoreNLogoutPage();
-
-    @When("user clicks on the store icon")
-    public void user_clicks_on_the_store_icon() {
-        storeNLogoutPage.clickOnStoreIcon();
-    }
 
     @Then("verify user is on store page")
     public void verify_user_is_on_store_page() {
@@ -47,7 +43,7 @@ public class StoreNLogoutSteps {
 
     @Then("verify user is successfully logged out")
     public void verify_user_is_successfully_logged_out() {
-        Assert.assertTrue(storeNLogoutPage.isLogoutSuccessful());
+        Assert.assertEquals(storeNLogoutPage.isLogoutSuccessful(), "You have been logged out!!");
     }
 
 }

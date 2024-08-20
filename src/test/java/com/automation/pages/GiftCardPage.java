@@ -18,9 +18,6 @@ public class GiftCardPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'rounded-lg')]")
     List<WebElement> giftCardList;
 
-    @FindBy(xpath = "//div[contains(@class,'md:grid-cols-3')]")
-    List<WebElement> cardsImage;
-
     @FindBy(id = "First Name")
     WebElement firstName;
 
@@ -40,8 +37,6 @@ public class GiftCardPage extends BasePage {
     WebElement cardAddedToBag;
 
     public void switchWindow() {
-        for (WebElement image : cardsImage) {
-            image.click();
             String originalWindow = driver.getWindowHandle();
             Set<String> listOfWindow = driver.getWindowHandles();
 
@@ -50,7 +45,6 @@ public class GiftCardPage extends BasePage {
                     driver.switchTo().window(window);
                 }
             }
-        }
     }
 
     public void clickOnGiftCardLink() {

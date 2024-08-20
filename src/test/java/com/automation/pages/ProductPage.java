@@ -20,6 +20,7 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//span[contains(@class,'absolute right-2 flex size-3.5 items-center justify-center')]//following-sibling::span[text()='Price Low to High']")
     WebElement chooseLowToHigh;
 
+    // Finding xpath using text
     @FindBy(xpath = "//span[text()='Price High to Low']")
     WebElement chooseHighToLow;
 

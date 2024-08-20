@@ -2,8 +2,6 @@ package com.automation.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 import java.util.Set;
 
 public class MembershipPage extends BasePage {
@@ -17,9 +15,7 @@ public class MembershipPage extends BasePage {
     @FindBy(xpath = "(//div[text()='Buy Now'])[1]")
     WebElement buyNowLink;
 
-    @FindBy(xpath = "//div[contains(@class,'md:grid-cols-4')]")
-    List<WebElement> membershipImage;
-
+    // Finding ancestor element
     @FindBy(xpath = "//img[@alt='plus_icon']/ancestor::button[text()='Description']")
     WebElement productDescription;
 
@@ -38,8 +34,6 @@ public class MembershipPage extends BasePage {
     }
 
     public void switchWindow() {
-        for (WebElement image : membershipImage) {
-            image.click();
             String originalWindow = driver.getWindowHandle();
             Set<String> listOfWindow = driver.getWindowHandles();
 
@@ -48,7 +42,6 @@ public class MembershipPage extends BasePage {
                     driver.switchTo().window(window);
                 }
             }
-        }
     }
 
     public void clickOnBuyNowLink() {
@@ -63,10 +56,6 @@ public class MembershipPage extends BasePage {
     public void readProductDescription() {
         productDescription.click();
     }
-
-//    public boolean isCardSuccessfullyAddedToBag() {
-//        return addedSuccessfully.isDisplayed();
-//    }
 
     public void removeMembershipCardFromBag() {
         viewBag();

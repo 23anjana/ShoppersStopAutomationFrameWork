@@ -34,11 +34,6 @@ public class MembershipSteps {
         membershipPage.addToBag();
     }
 
-//    @Then("verify the product is added to the bag")
-//    public void verify_the_product_is_added_to_the_bag() {
-//        Assert.assertTrue(membershipPage.isCardSuccessfullyAddedToBag());
-//    }
-
     @When("user clicks on VIEW BAG and removes card from bag")
     public void userClicksOnVIEWBAGAndRemovesCardFromBag() {
         membershipPage.removeMembershipCardFromBag();
