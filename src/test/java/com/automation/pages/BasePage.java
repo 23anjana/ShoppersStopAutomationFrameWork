@@ -1,6 +1,7 @@
 package com.automation.pages;
 
 import com.automation.utils.DriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,16 +10,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Set;
 
 public class BasePage {
     WebDriver driver;
     static WebDriverWait wait;
 
+
     public BasePage() {
         this.driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     public static boolean isPresent(WebElement element) {
@@ -51,7 +54,32 @@ public class BasePage {
     // Function for scroll
     public void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-        //js.executeScript("arguments[0].scrollIntoView(true);");
+        Dimension height=driver.manage().window().getSize();
+
+        int scrollDistance=height.height;
+        System.out.println("Window height = "+ height.height);
+
+        int i=10;
+        while (i<scrollDistance){
+            js.executeScript(String.format("window.scrollBy(0,%d)",i));
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            i+=20;
+        }
+    }
+
+    public void waitForElementToBeClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitForElementToBeVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForAllElementToBeVisible(List<WebElement> elements) {
+        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 }

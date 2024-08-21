@@ -2,6 +2,7 @@ package com.automation.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Set;
@@ -104,6 +105,7 @@ public class ProductPage extends BasePage {
     }
 
     public void chooseSize() {
+        waitForElementToBeClickable(sizeOptions.get(0));
         sizeOptions.get(0).click();
     }
 

@@ -33,11 +33,8 @@ public class ProductDetailsPage extends BasePage {
         closeButton.click();
     }
 
-//    public void clickProductAddToBag() {
-//        productAddToBag();
-//    }
-
     public String productAddedSuccessfully() {
+        System.out.println(successMessage.getText());
         return successMessage.getText();
     }
 
@@ -45,7 +42,4 @@ public class ProductDetailsPage extends BasePage {
         removeMinusIcon.click();
     }
 
-//    public String isProductRemovedSuccessfully() {
-//        return productRemovedSuccessfully();
-//    }
 }

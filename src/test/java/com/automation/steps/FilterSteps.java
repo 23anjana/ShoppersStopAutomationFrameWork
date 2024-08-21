@@ -10,7 +10,7 @@ public class FilterSteps {
     FilterPage filterPage=new FilterPage();
 
     @When("user clicks on {string} names")
-    public void userClicksOnNames(String key) {
+    public void userClicksOnNames(String key){
        filterPage.clicksOnBrand(key);
     }
 

@@ -1,7 +1,6 @@
 package com.automation.pages;
 
 import com.automation.utils.ConfigReader;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -98,9 +97,10 @@ public class HomePage extends BasePage {
 
         // Hovers on the element
         action.moveToElement(elementMan).build().perform();
-
-        // Clicks the product
+//
+//        // Clicks the product
         elementShirt.click();
+
     }
 
     public void hoverKidsOption() {
@@ -111,7 +111,7 @@ public class HomePage extends BasePage {
         elementTopWear.click();
     }
 
-    public void searchItem(String productName){
+    public void searchItem(String productName) {
 
         // Calling search bar function
         clickOnSearchBar();
@@ -136,7 +136,7 @@ public class HomePage extends BasePage {
         switchWindow();
     }
 
-    public void hoverWomenOption(){
+    public void hoverWomenOption() {
         // Using Actions class to do the hover functionality
         Actions action = new Actions(driver);
 

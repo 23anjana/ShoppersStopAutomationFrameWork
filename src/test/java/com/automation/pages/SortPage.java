@@ -1,6 +1,5 @@
 package com.automation.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -10,72 +9,89 @@ import java.util.List;
 
 public class SortPage extends BasePage {
 
-    @FindBy(xpath = "//div[@class='flex justify-between']")
-    WebElement scrollUpTo;
-
-    @FindBy(xpath = "//div[@data-item-type='ProdctSCCard']//div//div[contains(@class,'bg-transparent')]//div[contains(text(),'₹')]")
+    @FindBy(xpath = "//div[@data-item-type='ProdctSCCard']//div[contains(text(),'₹')]")
     List<WebElement> priceList;
-
-    @FindBy(xpath = "//div[@class='bg-transparent']//div[contains(text(),'₹')]")
-    List<WebElement> priceHighToLowList;
 
     @FindBy(xpath = "//p[contains(text(),'₹')]/following-sibling::p")
     List<WebElement> discountList;
 
     public boolean verifyProductDisplayedLowToHigh() {
-//        scroll(scrollUpTo);
-//        Actions actions=new Actions(driver);
-//        actions.scrollToElement(scrollUpTo).pause(1000).build().perform();
-        isPresent(scrollUpTo);
-        List<String> str1 = new ArrayList<>();
+        // Scroll the page to ensure all product prices are loaded
+        scroll();
 
+        // Create a list to store the prices extracted from the web elements
+        List<Double> str1 = new ArrayList<>();
+
+        // Iterate over each price element in the priceList and added to the list
         for (WebElement price : priceList) {
-            str1.add(price.getText().replace("₹", ""));
+            str1.add(Double.valueOf(price.getText().replace("₹", "")));
         }
-        System.out.println(str1);
-        List<String> str2 = new ArrayList<>(str1);
+        System.out.println("Original price list low to high :\n" + str1);
 
+        // Create a copy of the original price list to sort
+        List<Double> str2 = new ArrayList<>(str1);
+
+        // Sort the copied list of prices
         Collections.sort(str2);
-        System.out.println(str2);
+        System.out.println("Sorted price list low to high :\n" + str2);
 
+        // Compare the original list of prices with the sorted list
         return str1.equals(str2);
     }
 
     public boolean verifyProductDisplayedHighToLow() {
-//        scroll(scrollUpTo);
+        // Scroll the page to ensure all product prices are loaded
+        scroll();
+
+        // Create a list to store the prices extracted from the web elements
         List<String> str1 = new ArrayList<>();
 
-        for (WebElement price : priceHighToLowList) {
+        // Iterate over each price element in the priceList and added to the list
+        for (WebElement price : priceList) {
             str1.add(price.getText().replace("₹", ""));
         }
-        System.out.println("Original price list high to low" + str1);
+        System.out.println("Original price price list high to low :\n" + str1);
 
+        // Create a copy of the original price list to sort
         List<String> str2 = new ArrayList<>(str1);
+
+        // Sort the copied list of prices in ascending order
         Collections.sort(str2);
-        System.out.println("Low to high" + str2);
+        System.out.println("Sorted list ie,Low to high :\n" + str2);
 
+        // Reverse the sorted list to get it in descending order
         Collections.reverse(str2);
-        System.out.println("High to Low" + str2);
+        System.out.println("Reversed list ie,High to Low :\n" + str2);
 
+        // Compare the original list of prices with the reversed sorted list
         return str1.equals(str2);
     }
 
     public boolean verifyProductDisplayedDiscountHighToLow() {
-//        scroll(scrollUpTo);
-        List<String> str1 = new ArrayList<>();
+        // Scroll the page to ensure all product prices are loaded
+        scroll();
 
+        // Create a list to store the prices extracted from the web elements
+        List<Double> str1 = new ArrayList<>();
+
+        // Iterate over each price element in the priceList and added to the list
         for (WebElement discount : discountList) {
-            str1.add(discount.getText().split("%")[0]);
+            str1.add(Double.valueOf(discount.getText().split("%")[0]));
         }
-        System.out.println(str1);
+        System.out.println("Original price price list high to low :\n" + str1);
 
-        List<String> str2 = new ArrayList<>(str1);
+        // Create a copy of the original price list to sort
+        List<Double> str2 = new ArrayList<>(str1);
+
+        // Sort the copied list of prices in ascending order
         Collections.sort(str2);
-        System.out.println(str2);
+        System.out.println("Sorted list ie,Low to high :\n" + str2);
 
+        // Reverse the sorted list to get it in descending order
         Collections.reverse(str2);
-        System.out.println(str2);
+        System.out.println("Reversed list ie,High to Low :\n" + str2);
 
+        // Compare the original list of prices with the reversed sorted list
         return str1.equals(str2);
     }
 }
