@@ -108,7 +108,6 @@ public class BeautyStopPage extends BasePage {
     }
 
     public void addProductToCart() {
-
         waitForElementToBeClickable(addToCartButton);
         addToCartButton.click();
     }

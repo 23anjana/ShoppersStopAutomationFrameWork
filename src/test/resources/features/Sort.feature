@@ -1,4 +1,4 @@
-Feature: Validate sorting functionality of Shoppers Stop
+Feature: Validate Sorting Functionality of Shoppers Stop
 
   Background:
     Given user opens the website

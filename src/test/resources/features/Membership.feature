@@ -1,4 +1,4 @@
-Feature: Validate Gift Card functionality
+Feature: Validate Membership Functionality
 
   Scenario: Verify the First Citizen Club membership functionality
     Given user opens the website

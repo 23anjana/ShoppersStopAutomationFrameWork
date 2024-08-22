@@ -26,14 +26,19 @@ public class SortPage extends BasePage {
         for (WebElement price : priceList) {
             str1.add(Double.valueOf(price.getText().replace("₹", "")));
         }
-        System.out.println("Original price list low to high :\n" + str1);
+        System.out.println("Original price list, low to high :\n" + str1);
 
         // Create a copy of the original price list to sort
         List<Double> str2 = new ArrayList<>(str1);
 
+        // Reverse the copied list to get it in descending order
+        Collections.reverse(str2);
+        System.out.println("Reversed List in Descending Order :\n" + str2);
+
+
         // Sort the copied list of prices
         Collections.sort(str2);
-        System.out.println("Sorted price list low to high :\n" + str2);
+        System.out.println("Sorted the reversed price list,low to high  :\n" + str2);
 
         // Compare the original list of prices with the sorted list
         return str1.equals(str2);
@@ -50,18 +55,18 @@ public class SortPage extends BasePage {
         for (WebElement price : priceList) {
             str1.add(price.getText().replace("₹", ""));
         }
-        System.out.println("Original price price list high to low :\n" + str1);
+        System.out.println("Original price price list, high to low :\n" + str1);
 
         // Create a copy of the original price list to sort
         List<String> str2 = new ArrayList<>(str1);
 
         // Sort the copied list of prices in ascending order
         Collections.sort(str2);
-        System.out.println("Sorted list ie,Low to high :\n" + str2);
+        System.out.println("Sorted list, low to high :\n" + str2);
 
         // Reverse the sorted list to get it in descending order
         Collections.reverse(str2);
-        System.out.println("Reversed list ie,High to Low :\n" + str2);
+        System.out.println("Reversed list, high to low :\n" + str2);
 
         // Compare the original list of prices with the reversed sorted list
         return str1.equals(str2);
@@ -78,18 +83,18 @@ public class SortPage extends BasePage {
         for (WebElement discount : discountList) {
             str1.add(Double.valueOf(discount.getText().split("%")[0]));
         }
-        System.out.println("Original price price list high to low :\n" + str1);
+        System.out.println("Original price price list, high to low :\n" + str1);
 
         // Create a copy of the original price list to sort
         List<Double> str2 = new ArrayList<>(str1);
 
         // Sort the copied list of prices in ascending order
         Collections.sort(str2);
-        System.out.println("Sorted list ie,Low to high :\n" + str2);
+        System.out.println("Sorted list, low to high :\n" + str2);
 
         // Reverse the sorted list to get it in descending order
         Collections.reverse(str2);
-        System.out.println("Reversed list ie,High to Low :\n" + str2);
+        System.out.println("Reversed list, high to low :\n" + str2);
 
         // Compare the original list of prices with the reversed sorted list
         return str1.equals(str2);

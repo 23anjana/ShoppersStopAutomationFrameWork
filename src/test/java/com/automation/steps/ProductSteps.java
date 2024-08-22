@@ -63,31 +63,31 @@ public class ProductSteps {
 
     @When("user choose first product from result page")
     public void userChooseFirstProductFromResultPage() {
-        productPage.chooseFirstProduct();
+        productPage.chooseProduct();
     }
 
     @Then("verify searched product page is displayed")
     public void verifySearchedProductPageIsDisplayed() {
         Assert.assertEquals(productPage.productPageDisplayed(), ConfigReader.getConfigValue("product.first_name"));
-        Assert.assertEquals(productPage.isFirstProductPageDisplayed(), "FILTERS");
+        Assert.assertEquals(productPage.isProductPageDisplayed(), "FILTERS");
     }
 
-    @When("user choose first product and preferred size of the first product")
-    public void userChooseFirstProductAndPreferredSizeOfTheFirstProduct() {
-        productPage.chooseFirstProduct();
+    @When("user choose  product and preferred size of the first product")
+    public void userChooseProductAndPreferredSizeOfTheFirstProduct() {
+        productPage.chooseProduct();
         productPage.chooseSize();
     }
 
     @Then("verify second product page is displayed")
     public void verifySecondProductPageIsDisplayed() {
         Assert.assertEquals(productPage.productPageDisplayed(), ConfigReader.getConfigValue("product.second_name"));
-        Assert.assertEquals(productPage.isFirstProductPageDisplayed(), "FILTERS");
+        Assert.assertEquals(productPage.isProductPageDisplayed(), "FILTERS");
 
     }
 
     @When("user choose first product from the second product result page")
     public void userChooseFirstProductFromTheSecondProductResultPage() {
-        productPage.chooseFirstProduct();
+        productPage.chooseProduct();
     }
 
     @Then("verify  result page is displayed")

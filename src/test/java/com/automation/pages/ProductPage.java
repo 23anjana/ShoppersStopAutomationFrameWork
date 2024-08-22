@@ -84,7 +84,6 @@ public class ProductPage extends BasePage {
 
     public void sortHighToLow() {
         chooseHighToLow.click();
-        isPresent(element);
     }
 
     public String topWearPageDisplayed() {
@@ -95,7 +94,7 @@ public class ProductPage extends BasePage {
         chooseDiscount.click();
     }
 
-    public void chooseFirstProduct() {
+    public void chooseProduct() {
 
         // Clicks the first product from product list
         productImage.get(0).click();
@@ -104,12 +103,12 @@ public class ProductPage extends BasePage {
         switchWindow();
     }
 
-    public String isFirstProductPageDisplayed() {
+    public String isProductPageDisplayed() {
         return  filterElementText.getText();
     }
 
     public void chooseSize() {
-        waitForElementToBeClickable(sizeOptions.get(0));
+        waitForAllElementToBeVisible(sizeOptions);
         sizeOptions.get(0).click();
     }
 

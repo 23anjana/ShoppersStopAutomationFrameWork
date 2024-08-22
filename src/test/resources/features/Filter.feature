@@ -1,12 +1,14 @@
-Feature: Validate filter functionality of Shoppers Stop
+Feature: Validate Filter Functionality of Shoppers Stop
 
-  Scenario Outline:Verify user can filter products using brand names
+  Background:
     Given user opens the website
     Then  verify user is on home page
-    When  When  user hovers over WOMEN and choose Ethnic Dresses option
+
+  Scenario Outline:Verify user can filter products using brand names
+    When  user hovers over WOMEN and choose Ethnic Dresses option
     Then  verify  result page is displayed
-    When  user clicks on "<brand>" names
-    Then  verify products are displayed based on "<brand>"
+    When  user clicks on brand "<brand>" names
+    Then  verify products are displayed based on "<brand>" brand names
 
     Examples:
       | brand         |
@@ -14,4 +16,34 @@ Feature: Validate filter functionality of Shoppers Stop
       | juniper       |
       | black scissor |
       | myshka        |
+
+  Scenario Outline: Verify user can filter product using filter categories
+    When  user enters "Kurta" in the search bar
+    Then  verify result page is displayed
+    When  user clicks on categories "<Filters>" under filter options
+    And   user search filter option "<Subcategory>" in the filter categories search bar
+    And   select the resultant filter option
+    Then  verify filtered "<Subcategory>" page is displayed
+
+    Examples:
+      |   Filters    |    Subcategory |
+      | Categories   |    Indianwear  |
+      | Department   |    Women       |
+      | Categories   |    Clothing    |
+
+    Scenario: Verify user can clear all applied filters
+      When  user enters "Watches" in the search bar
+      Then  verify result page is displayed
+      When  user clicks on categories "Product Type" under filter options
+      And   user search filter option "Chronograph" in the filter categories search bar
+      And   select the resultant filter option
+      Then  verify filtered "Chronograph" page is displayed
+      When  user clicks on clear all option
+      Then  verify all applied filters are cleared
+
+
+
+
+
+
 

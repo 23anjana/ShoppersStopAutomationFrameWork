@@ -68,7 +68,11 @@ public class GiftCardPage extends BasePage {
     }
 
     public void addToBag() {
-        waitForElementToBeClickable(addToBag);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         addToBag.click();
     }
 

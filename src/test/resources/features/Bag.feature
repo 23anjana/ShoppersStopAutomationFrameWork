@@ -1,4 +1,4 @@
-Feature: Validate ADD TO BAG and REMOVE To Bag functionality of Shoppers Stop
+Feature: Validate ADD TO BAG and REMOVE To Bag Functionality of Shoppers Stop
 
   Scenario: Verify user can add and remove product from bag
     Given user opens the website

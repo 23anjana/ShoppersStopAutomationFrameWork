@@ -1,11 +1,11 @@
-Feature: Verify order functionality of Shoppers Stop
+Feature: Verify Order Functionality of Shoppers Stop
 
   Scenario:Verify user can see correct prices in cart page
     Given user opens the website
     Then  verify user is on home page
     When  user searches for "product.first_name" on search bar
     Then  verify searched product page is displayed
-    When  user choose first product and preferred size of the first product
+    When  user choose  product and preferred size of the first product
     And   user clicks on ADD TO BAG button option
     And   user clicks on close button
     Then  verify user added first product successfully into the bag

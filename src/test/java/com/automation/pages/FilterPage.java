@@ -2,21 +2,49 @@ package com.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class FilterPage extends BasePage {
 
     // Define the XPath for locating brand buttons. The '%s' will be replaced with the actual brand name.
-    String xpathForBrand = "//button[text()='%s']";
+    String xpathForButtons = "//button[text()='%s']";
 
-    public void clicksOnBrand(String brand) {
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    WebElement filterSearchBar;
 
-        // Format the XPath with the provided brand name
-        String formattedXpathForCategory = String.format(xpathForBrand, brand);
+    @FindBy(tagName = "label")
+    WebElement searchResult;
 
-        // Locate the brand button element using the formatted XPath
+    String xpathForFilterOptionName = "//div[text()='%s']";
+
+    @FindBy(xpath = "//span[contains(text(),'Items')] ")
+    WebElement totalItems;
+
+    @FindBy(xpath = "//div[text()='Clear All']")
+    WebElement clearAllButton;
+
+    double totalNumberItems;
+    double numberItemsAfterApplyFilter;
+    double numberItemsAfterClear;
+
+    public void clicksOnFilterOptions(String keyName) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        totalNumberItems = Double.valueOf(totalItems.getText().replaceAll("[^0-9]", ""));
+        System.out.println("Total number of items on first search  :" + totalNumberItems);
+
+        // Format the XPath with the provided key name
+        String formattedXpathForCategory = String.format(xpathForButtons, keyName);
+
+        // Locate the key name button element using the formatted XPath
         WebElement elementClick = driver.findElement(By.xpath(formattedXpathForCategory));
+
         elementClick.click();
     }
 
@@ -43,4 +71,49 @@ public class FilterPage extends BasePage {
         return flag;
     }
 
+    public void searchOnFilterSearchBar(String key) {
+
+        // Click on the filter search bar
+        filterSearchBar.click();
+
+        // Inputs the key name want to search
+        filterSearchBar.sendKeys(key);
+    }
+
+    public void clicksOnSearchResults() {
+        searchResult.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        numberItemsAfterApplyFilter = Double.valueOf(totalItems.getText().replaceAll("[^0-9]", ""));
+        System.out.println("Total number of items after apply filter :" + numberItemsAfterApplyFilter);
+
+    }
+
+    public String isFilteredPageDisplayed(String filterName) {
+        WebElement formattedXpathForFilterOptionName = driver.findElement(By.xpath(String.format(xpathForFilterOptionName, filterName)));
+
+        return formattedXpathForFilterOptionName.getText();
+    }
+
+    public void clicksOnClearAllButton() {
+        clearAllButton.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        numberItemsAfterClear = Double.valueOf(totalItems.getText().replaceAll("[^0-9]", ""));
+        System.out.println("Total number of items after clearing filter  :" + numberItemsAfterClear);
+
+    }
+
+    public boolean isAppliedFiltersCleared() {
+        return  totalNumberItems ==numberItemsAfterClear;
+    }
 }

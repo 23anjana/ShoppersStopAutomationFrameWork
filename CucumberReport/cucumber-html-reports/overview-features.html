@@ -50,8 +50,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                201,
-                0,
+                238,
+                1,
                 0,
                 0,
                 0
@@ -93,7 +93,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 201) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 239) / 100;
                         return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
                     }
                 }
@@ -106,8 +106,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                25,
-                0
+                29,
+                1
             ],
             backgroundColor: [
                 "#00B000",
@@ -143,7 +143,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 25) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 30) / 100;
                         return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
                     }
                 }
@@ -156,8 +156,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                   11,
-                   0
+                   10,
+                   1
                ],
                backgroundColor: [
                 "#00B000",
@@ -233,7 +233,7 @@ $(document).ready(function() {
     <tr class="info">
       <td>CucumberAutomation</td>
               <td>1</td>
-            <td>21 Aug 2024, 23:45</td>
+            <td>22 Aug 2024, 18:09</td>
     </tr>
   </tbody>
 </table>
@@ -328,7 +328,7 @@ $(document).ready(function() {
 
   <tbody>
           <tr>
-        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Bag-feature.html">Validate ADD TO BAG and REMOVE To Bag functionality of Shoppers Stop</a></td>
+        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Bag-feature.html">Validate ADD TO BAG and REMOVE To Bag Functionality of Shoppers Stop</a></td>
         
         <td      class="passed"    >12</td>
         <td >0</td>
@@ -341,7 +341,24 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">1</td>
 
-        <td class="duration" data-value="11982766900">11s 982ms</td>
+        <td class="duration" data-value="16082967200">16s 082ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
+        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Filter-feature.html">Validate Filter Functionality of Shoppers Stop</a></td>
+        
+        <td      class="passed"    >58</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">58</td>
+
+        <td  class="passed"    >8</td>
+        <td >0</td>
+        <td class="total">8</td>
+
+        <td class="duration" data-value="110348940000">1m 50s 348ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
@@ -358,11 +375,11 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">1</td>
 
-        <td class="duration" data-value="22234172300">22s 234ms</td>
+        <td class="duration" data-value="15418058300">15s 418ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
-        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Membership-feature.html">Validate Gift Card functionality</a></td>
+        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Membership-feature.html">Validate Membership Functionality</a></td>
         
         <td      class="passed"    >12</td>
         <td >0</td>
@@ -375,25 +392,42 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">1</td>
 
-        <td class="duration" data-value="14020207000">14s 020ms</td>
+        <td class="duration" data-value="16596803200">16s 596ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
+        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Sort-feature.html">Validate Sorting Functionality of Shoppers Stop</a></td>
+        
+        <td      class="passed"    >21</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">21</td>
+
+        <td  class="passed"    >3</td>
+        <td >0</td>
+        <td class="total">3</td>
+
+        <td class="duration" data-value="43904758100">43s 904ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
         <td class="tagname"><a href="report-feature_file-src-test-resources-features-StoreNLogout-feature.html">Validate Stores &amp; Events and logout functionalities</a></td>
         
-        <td      class="passed"    >13</td>
-        <td >0</td>
+        <td      class="passed"    >12</td>
+        <td      class="failed"    >1</td>
         <td >0</td>
         <td >0</td>
         <td >0</td>
         <td class="total">13</td>
 
-        <td  class="passed"    >2</td>
-        <td >0</td>
+        <td  class="passed"    >1</td>
+        <td  class="failed"    >1</td>
         <td class="total">2</td>
 
-        <td class="duration" data-value="12266318900">12s 266ms</td>
-        <td class="passed">Passed</td>
+        <td class="duration" data-value="8231918700">8s 231ms</td>
+        <td class="failed">Failed</td>
       </tr>
           <tr>
         <td class="tagname"><a href="report-feature_file-src-test-resources-features-BeautyStop-feature.html">Validate The Beauty Stop page functionality</a></td>
@@ -409,41 +443,24 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">2</td>
 
-        <td class="duration" data-value="73601915000">1m 13s 601ms</td>
+        <td class="duration" data-value="56670240800">56s 670ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
         <td class="tagname"><a href="report-feature_file-src-test-resources-features-Miscellaneous-feature.html">Validate different features of the website</a></td>
         
-        <td      class="passed"    >27</td>
+        <td      class="passed"    >31</td>
         <td >0</td>
         <td >0</td>
         <td >0</td>
         <td >0</td>
-        <td class="total">27</td>
+        <td class="total">31</td>
 
-        <td  class="passed"    >4</td>
+        <td  class="passed"    >5</td>
         <td >0</td>
-        <td class="total">4</td>
+        <td class="total">5</td>
 
-        <td class="duration" data-value="49786493700">49s 786ms</td>
-        <td class="passed">Passed</td>
-      </tr>
-          <tr>
-        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Filter-feature.html">Validate filter functionality of Shoppers Stop</a></td>
-        
-        <td      class="passed"    >24</td>
-        <td >0</td>
-        <td >0</td>
-        <td >0</td>
-        <td >0</td>
-        <td class="total">24</td>
-
-        <td  class="passed"    >4</td>
-        <td >0</td>
-        <td class="total">4</td>
-
-        <td class="duration" data-value="82848867500">1m 22s 848ms</td>
+        <td class="duration" data-value="38749355600">38s 749ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
@@ -460,24 +477,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">3</td>
 
-        <td class="duration" data-value="35341705900">35s 341ms</td>
-        <td class="passed">Passed</td>
-      </tr>
-          <tr>
-        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Sort-feature.html">Validate sorting functionality of Shoppers Stop</a></td>
-        
-        <td      class="passed"    >21</td>
-        <td >0</td>
-        <td >0</td>
-        <td >0</td>
-        <td >0</td>
-        <td class="total">21</td>
-
-        <td  class="passed"    >3</td>
-        <td >0</td>
-        <td class="total">3</td>
-
-        <td class="duration" data-value="52004127700">52s 004ms</td>
+        <td class="duration" data-value="13809512100">13s 809ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
@@ -494,11 +494,11 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">3</td>
 
-        <td class="duration" data-value="44949335100">44s 949ms</td>
+        <td class="duration" data-value="26437296300">26s 437ms</td>
         <td class="passed">Passed</td>
       </tr>
           <tr>
-        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Cart-feature.html">Verify order functionality of Shoppers Stop</a></td>
+        <td class="tagname"><a href="report-feature_file-src-test-resources-features-Cart-feature.html">Verify Order Functionality of Shoppers Stop</a></td>
         
         <td      class="passed"    >17</td>
         <td >0</td>
@@ -511,7 +511,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">1</td>
 
-        <td class="duration" data-value="31442524500">31s 442ms</td>
+        <td class="duration" data-value="23684175600">23s 684ms</td>
         <td class="passed">Passed</td>
       </tr>
       </tbody>
@@ -519,33 +519,33 @@ $(document).ready(function() {
   <tfoot class="total">
     <tr>
       <td>11</td>
-            <td>201</td>
+            <td>238</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>201</td>
+      <td>239</td>
 
-      <td>25</td>
-      <td>0</td>
-      <td>25</td>
+      <td>29</td>
+      <td>1</td>
+      <td>30</td>
 
-      <td class="duration">7m 10s 478ms</td>
+      <td class="duration">6m 9s 934ms</td>
       <td></td>
     </tr>
     <tr>
       <td></td>
-            <td>100.00%</td>
-      <td>0.00%</td>
+            <td>99.58%</td>
+      <td>0.42%</td>
       <td>0.00%</td>
       <td>0.00%</td>
       <td>0.00%</td>
       <td></td>
-      <td>100.00%</td>
-      <td>0.00%</td>
+      <td>96.67%</td>
+      <td>3.33%</td>
       <td></td>
       <td></td>
-      <td>100.00%</td>
+      <td>90.91%</td>
     </tr>
   </tfoot>
 </table>
