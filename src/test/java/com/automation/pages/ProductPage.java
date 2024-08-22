@@ -49,6 +49,12 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//h1[text()='Ethnic Dresses']")
     WebElement ethnicTextElement;
 
+    @FindBy(xpath = "//span[text()='LUXE BEAUTY']")
+    WebElement pageTitle1;
+
+    @FindBy(xpath = "//div[text()='SHOP ALL LUXE BEAUTY']")
+    WebElement pageTitle2;
+
     // Checking if the first product is displayed from a list of products
     public boolean isResultPageDisplayed() {
         return productList.get(0).isDisplayed();
@@ -111,5 +117,9 @@ public class ProductPage extends BasePage {
 
     public String isEthnicDressPageDisplayed(){
         return  ethnicTextElement.getText();
+    }
+
+    public boolean isBottomCategoryResultPageDisplayed() {
+        return pageTitle1.isDisplayed() && pageTitle2.isDisplayed();
     }
 }

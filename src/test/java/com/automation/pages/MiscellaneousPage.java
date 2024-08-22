@@ -63,10 +63,12 @@ public class MiscellaneousPage extends BasePage {
     }
 
     public void clickOnLeftArrow() {
+        waitForElementToBeClickable(leftArrow);
         leftArrow.click();
     }
 
     public void clickOnDesiredPage() {
+        waitForElementToBeClickable(pageNumber);
         pageNumber.click();
     }
 

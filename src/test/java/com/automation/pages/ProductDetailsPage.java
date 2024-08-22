@@ -26,6 +26,7 @@ public class ProductDetailsPage extends BasePage {
     }
 
     public void chooseSize() {
+        waitForElementToBeClickable(chooseSizeOptions);
         clickUsingJavaScriptExecutor(chooseSizeOptions);
     }
 

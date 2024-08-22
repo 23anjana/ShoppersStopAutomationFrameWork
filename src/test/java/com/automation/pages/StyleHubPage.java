@@ -117,7 +117,7 @@ public class StyleHubPage extends BasePage {
     public void search(String keyword) {
         searchIcon.click();
         searchBar.sendKeys(keyword);
-        searchBar.sendKeys(Keys.RETURN);
+        searchBar.sendKeys(Keys.ENTER);
     }
 
     public boolean isResultPageDisplayed() {

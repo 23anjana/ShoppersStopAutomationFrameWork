@@ -91,7 +91,7 @@ public class BeautyStopPage extends BasePage {
         searchBar.sendKeys(productName);
 
         // Click on enter or return
-        searchBar.sendKeys(Keys.RETURN);
+        searchBar.sendKeys(Keys.ENTER);
     }
 
     public boolean isResultPageDisplayed() {
@@ -108,6 +108,8 @@ public class BeautyStopPage extends BasePage {
     }
 
     public void addProductToCart() {
+
+        waitForElementToBeClickable(addToCartButton);
         addToCartButton.click();
     }
 
@@ -120,10 +122,12 @@ public class BeautyStopPage extends BasePage {
     }
 
     public void clickToAddQuantity() {
+        waitForElementToBeClickable(addTheQuantity);
         addTheQuantity.click();
     }
 
     public boolean isQuantityUpdated() {
+        waitForElementToBeClickable(quantityUpdated);
         return quantityUpdated.isDisplayed();
     }
 
@@ -137,10 +141,12 @@ public class BeautyStopPage extends BasePage {
     }
 
     public boolean isProductSuccessfullyRemoved() {
+        waitForElementToBeClickable(productRemovedMessage);
         return productRemovedMessage.isDisplayed();
     }
 
     public void clickOnGetShoppingButton() {
+        waitForElementToBeClickable(getShoppingButton);
         getShoppingButton.click();
     }
 

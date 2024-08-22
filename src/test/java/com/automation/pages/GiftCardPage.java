@@ -68,7 +68,7 @@ public class GiftCardPage extends BasePage {
     }
 
     public void addToBag() {
-//        waitForElementToBeClickable(addToBag);
+        waitForElementToBeClickable(addToBag);
         addToBag.click();
     }
 

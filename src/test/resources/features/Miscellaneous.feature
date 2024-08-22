@@ -30,3 +30,7 @@ Feature: Validate different features of the website
     Then verify result page is displayed
     When user clicks on the website logo
     Then verify user is on home page
+
+  Scenario: Verify user can select a category present at the bottom of the page
+    When user clicks on one of the category
+    Then verify user is navigated to the category result page

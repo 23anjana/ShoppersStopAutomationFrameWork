@@ -1,7 +1,7 @@
 package com.automation.pages;
 
 import com.automation.utils.ConfigReader;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -21,11 +21,14 @@ public class HomePage extends BasePage {
     @FindBy(tagName = "input")
     WebElement searchBar;
 
-    @FindBy(xpath = "(//div[contains(@class,'xs:text-sm')])[1]")
-    WebElement firstTrendingSearch;
+    @FindBy(xpath = "//div[contains(@class,'cursor-pointer justify-between')]")
+    List<WebElement> firstSearchOption;
 
-    @FindBy(xpath = "//div[contains(@class,'lg:text')and text()='Stop']")
-    WebElement popularBrandStop;
+    @FindBy(xpath = "//div[contains(@class,'gap-2 bg-neutral-100')]")
+    List<WebElement> firstTrendingSearch;
+
+    @FindBy(xpath = "//div[contains(@class,'flex-col flex-wrap')]")
+    List<WebElement> popularBrandStop;
 
     @FindBy(xpath = "//a[text()='MEN ']")
     WebElement elementMan;
@@ -54,6 +57,12 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//li[text()='Ethnic Dresses']")
     WebElement ethnicDress;
 
+    @FindBy(xpath = "//div[@class='flex justify-between']")
+    WebElement scrollUpTo;
+
+    @FindBy(xpath = "//li[contains(@class,'lg:text-xs xl:text-sm font-normal')]/a")
+    List<WebElement> bottomCategoryList;
+
     public void openWebsite() {
 
         // Passing the Website URL from config file
@@ -78,16 +87,18 @@ public class HomePage extends BasePage {
         // Inputs the product name
         searchBar.sendKeys(productName);
 
-        // Clicks on enter
-        searchBar.sendKeys(Keys.RETURN);
+        firstSearchOption.get(0).click();
+
+//        // Clicks on enter
+//        searchBar.sendKeys(Keys.RETURN);
     }
 
     public void trendingSearchProduct() {
-        firstTrendingSearch.click();
+        firstTrendingSearch.get(0).click();
     }
 
     public void popularBrand() {
-        popularBrandStop.click();
+        popularBrandStop.get(1).click();
     }
 
     public void hoverManOption() {
@@ -145,5 +156,14 @@ public class HomePage extends BasePage {
 
         // Clicks the product
         ethnicDress.click();
+    }
+
+    public void clickOnCategoryListAtPageBottom() {
+
+        // Scroll till the element is displayed
+        scrollTillTheElement(scrollUpTo);
+
+        // Selecting a category
+        bottomCategoryList.get(9).click();
     }
 }

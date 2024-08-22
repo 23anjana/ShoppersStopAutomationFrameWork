@@ -1,6 +1,8 @@
 package com.automation.steps;
 
+import com.automation.pages.HomePage;
 import com.automation.pages.MiscellaneousPage;
+import com.automation.pages.ProductPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,6 +11,8 @@ import org.junit.Assert;
 public class MiscellaneousSteps {
 
     MiscellaneousPage miscellaneousPage = new MiscellaneousPage();
+    HomePage homePage = new HomePage();
+    ProductPage productPage = new ProductPage();
 
     @When("user scrolls to the bottom of the page and clicks on the Up Arrow")
     public void userScrollsToTheBottomOfThePageAndClicksOnTheUpArrow() {
@@ -58,5 +62,15 @@ public class MiscellaneousSteps {
     @When("user clicks on the website logo")
     public void userClicksOnTheWebsiteLogo() {
         miscellaneousPage.clickOnWebSiteLogoLink();
+    }
+
+    @When("user clicks on one of the category")
+    public void userClicksOnOneOfTheCategory() {
+        homePage.clickOnCategoryListAtPageBottom();
+    }
+
+    @Then("verify user is navigated to the category result page")
+    public void verifyUserIsNavigatedToTheCategoryResultPage() {
+        Assert.assertTrue(productPage.isBottomCategoryResultPageDisplayed());
     }
 }

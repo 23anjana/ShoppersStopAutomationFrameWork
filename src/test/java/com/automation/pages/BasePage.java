@@ -53,22 +53,27 @@ public class BasePage {
 
     // Function for scroll
     public void scroll() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        Dimension height=driver.manage().window().getSize();
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        Dimension height = driver.manage().window().getSize();
 
-        int scrollDistance=height.height;
+        int scrollDistance = height.height;
         System.out.println("Window height = "+ height.height);
 
-        int i=10;
-        while (i<scrollDistance){
-            js.executeScript(String.format("window.scrollBy(0,%d)",i));
+        int i = 10;
+        while (i < scrollDistance){
+            javascriptExecutor.executeScript(String.format("window.scrollBy(0,%d)", i));
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            i+=20;
+            i += 20;
         }
+    }
+
+    public void scrollTillTheElement(WebElement element) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public void waitForElementToBeClickable(WebElement element) {
