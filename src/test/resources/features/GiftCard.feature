@@ -1,4 +1,4 @@
-Feature: Validate Gift Card functionality
+Feature: Validate Gift Card functionality of Shoppers Stop
 
   Scenario: Verify the Gift Card functionality
     Given user opens the website

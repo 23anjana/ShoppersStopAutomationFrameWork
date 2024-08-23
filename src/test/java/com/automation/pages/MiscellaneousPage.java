@@ -41,6 +41,23 @@ public class MiscellaneousPage extends BasePage {
     @FindBy(xpath = "//img[@alt='logo']")
     WebElement websiteLogoLink;
 
+    @FindBy(xpath = "//div[text()='Help / Frequently Asked Questions']")
+    WebElement helpNSupportPageTitle;
+
+    @FindBy(xpath = "//input[@placeholder='Search your question']")
+    WebElement querySearchBar;
+
+    @FindBy(xpath = "//span[text()='What is Express Delivery']")
+    WebElement helpNSupportQuery;
+
+    @FindBy(xpath = "//div[contains(@class,'md:text-neutral-500')]")
+    WebElement helpNSupportQueryAnswer;
+
+    @FindBy(xpath = "//img[@alt='plus_icon']")
+    List<WebElement> plusSignOfQuery;
+
+    // *** Methods ***
+
     public void scrollDownAndClickOnUpArrow() {
 
         // Calling the scroll function
@@ -72,7 +89,9 @@ public class MiscellaneousPage extends BasePage {
         pageNumber.click();
     }
 
-    public void clicksOnFirstProduct() {
+    public void clicksOnTheProduct() {
+
+        // Clicks on the first product from a list of products
         productList.get(0).click();
 
         // Switching to new window
@@ -100,5 +119,36 @@ public class MiscellaneousPage extends BasePage {
 
     public void clickOnWebSiteLogoLink() {
         websiteLogoLink.click();
+    }
+
+    public void searchQuery(String question) {
+
+        waitForElementToBeClickable(querySearchBar);
+        querySearchBar.click();
+
+        waitForElementToBeClickable(querySearchBar);
+        querySearchBar.sendKeys(question);
+
+        waitForElementToBeClickable(helpNSupportQuery);
+        helpNSupportQuery.click();
+    }
+
+    public boolean isOnHelpNSupportPage() {
+        return helpNSupportPageTitle.isDisplayed();
+    }
+
+    public void displayQueryAnswer() {
+
+        // Reads the text as a string
+        String queryAnswer = helpNSupportQueryAnswer.getText();
+
+        // Prints the text on the console
+        System.out.println(queryAnswer + "\n");
+    }
+
+    public void clickOnPlusSignForQueryDetail() {
+
+        // Clicks on the third question displayed
+        plusSignOfQuery.get(2).click();
     }
 }

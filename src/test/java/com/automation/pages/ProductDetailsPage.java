@@ -1,6 +1,5 @@
 package com.automation.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,6 +20,8 @@ public class ProductDetailsPage extends BasePage {
     @FindBy(xpath = "//img[@class='w-full' and @alt='minus']")
     WebElement removeMinusIcon;
 
+    //*** Methods ***
+
     public void clickSizeChart() {
         sizeChartElement.click();
     }
@@ -35,11 +36,15 @@ public class ProductDetailsPage extends BasePage {
     }
 
     public String productAddedSuccessfully() {
+
+        // Prints the message on successful addition of product to bag
         System.out.println(successMessage.getText());
         return successMessage.getText();
     }
 
     public void clicksRemoveIcon() {
+
+        // Removes the product from the bag
         removeMinusIcon.click();
     }
 

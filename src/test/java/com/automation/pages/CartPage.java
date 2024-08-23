@@ -30,6 +30,8 @@ public class CartPage extends BasePage {
     @FindBy(xpath = "//div[text()='Your Total Savings']//following-sibling::div[contains(text(),'₹')]")
     WebElement totalSavingsOnWeb;
 
+    //*** Method ***
+
     public void clickBagIcon() {
         bagIcon.click();
     }

@@ -3,7 +3,6 @@ package com.automation.pages;
 import com.automation.utils.ConfigReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -73,6 +72,7 @@ public class GiftCardPage extends BasePage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         addToBag.click();
     }
 
@@ -97,11 +97,17 @@ public class GiftCardPage extends BasePage {
     }
 
     public void removeFromBag() {
+        waitForElementToBeClickable(crossSign);
         crossSign.click();
         removeButton.click();
     }
 
     public String isRemoveSuccessful() {
+
+        // Waits until the element is visible
+        waitForElementToBeVisible(removeMessage);
+
+        // Prints the remove success message on te console
         System.out.println(removeMessage.getText());
         return removeMessage.getText();
     }

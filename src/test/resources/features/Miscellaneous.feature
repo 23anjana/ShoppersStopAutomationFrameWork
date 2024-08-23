@@ -1,4 +1,4 @@
-Feature: Validate different features of the website
+Feature: Validate different features of Shoppers Stop
 
   Background:
     Given user opens the website
@@ -21,7 +21,7 @@ Feature: Validate different features of the website
   Scenario: Verify user can check the estimated delivery information
     When user enters "Hair oil" in the search bar
     Then verify result page is displayed
-    When user clicks on the first product displayed
+    When user clicks on a product displayed
     And user inputs the pin code and clicks on Check button
     Then display the estimation information on to the console
 
@@ -34,3 +34,11 @@ Feature: Validate different features of the website
   Scenario: Verify user can select a category present at the bottom of the page
     When user clicks on one of the category
     Then verify user is navigated to the category result page
+
+  Scenario: Verify Help & Support functionality
+    When user clicks on Help & Support link
+    Then verify user is in Help & Support page
+    When user enters "What is Express Delivery?" in the query search bar
+    Then display the result onto the console
+    When user clicks on any of the questions displayed
+    Then display the result onto the console

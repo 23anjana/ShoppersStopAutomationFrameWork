@@ -15,6 +15,8 @@ public class SortPage extends BasePage {
     @FindBy(xpath = "//p[contains(text(),'₹')]/following-sibling::p")
     List<WebElement> discountList;
 
+    //*** Methods ***
+
     public boolean verifyProductDisplayedLowToHigh() {
         // Scroll the page to ensure all product prices are loaded
         scroll();

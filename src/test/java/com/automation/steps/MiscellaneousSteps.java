@@ -44,9 +44,9 @@ public class MiscellaneousSteps {
         miscellaneousPage.clickOnDesiredPage();
     }
 
-    @When("user clicks on the first product displayed")
+    @When("user clicks on a product displayed")
     public void userClicksOnTheFirstProductDisplayed() {
-        miscellaneousPage.clicksOnFirstProduct();
+        miscellaneousPage.clicksOnTheProduct();
     }
 
     @And("user inputs the pin code and clicks on Check button")
@@ -73,4 +73,30 @@ public class MiscellaneousSteps {
     public void verifyUserIsNavigatedToTheCategoryResultPage() {
         Assert.assertTrue(productPage.isBottomCategoryResultPageDisplayed());
     }
+
+    @When("user clicks on Help & Support link")
+    public void userClicksOnHelpSupportLink() {
+        homePage.clickOnHelpNSupport();
+    }
+
+    @When("user enters {string} in the query search bar")
+    public void userEntersInTheQuerySearchBar(String query) {
+        miscellaneousPage.searchQuery(query);
+    }
+
+    @Then("verify user is in Help & Support page")
+    public void verifyUserIsInHelpSupportPage() {
+        Assert.assertTrue(miscellaneousPage.isOnHelpNSupportPage());
+    }
+
+    @Then("display the result onto the console")
+    public void displayTheResultOntoTheConsole() {
+        miscellaneousPage.displayQueryAnswer();
+    }
+
+    @When("user clicks on any of the questions displayed")
+    public void userClicksOnAnyOfTheQuestionsDisplayed() {
+        miscellaneousPage.clickOnPlusSignForQueryDetail();
+    }
+
 }

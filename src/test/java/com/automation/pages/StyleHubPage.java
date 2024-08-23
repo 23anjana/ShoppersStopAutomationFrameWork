@@ -125,6 +125,8 @@ public class StyleHubPage extends BasePage {
     }
 
     public void clickOnFirstSearchResultLink() {
+
+        // Clicking on the first search result link
         resultLink.get(0).click();
     }
 }

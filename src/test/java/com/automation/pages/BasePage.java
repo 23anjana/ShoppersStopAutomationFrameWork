@@ -17,7 +17,6 @@ public class BasePage {
     WebDriver driver;
     static WebDriverWait wait;
 
-
     public BasePage() {
         this.driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
@@ -71,19 +70,23 @@ public class BasePage {
         }
     }
 
+    // Function to scroll until an element is found
     public void scrollTillTheElement(WebElement element) {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
+    // Function to wait until an element is clickable
     public void waitForElementToBeClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    // Function to wait until an element is visible
     public void waitForElementToBeVisible(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    // Function to wait until all the elements to be visible
     public void waitForAllElementToBeVisible(List<WebElement> elements) {
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }

@@ -1,4 +1,4 @@
-Feature: Validate The Beauty Stop page functionality
+Feature: Validate The Beauty Stop page functionality of Shoppers Stop
 
   Background:
     Given user opens the website

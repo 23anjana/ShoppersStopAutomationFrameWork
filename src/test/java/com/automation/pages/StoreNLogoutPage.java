@@ -33,6 +33,8 @@ public class StoreNLogoutPage extends BasePage {
     @FindBy(xpath = "//div[text()='You have been logged out!!']")
     WebElement logoutSuccessfulMessage;
 
+    //*** Store Methods ***
+
     public String isOnStorePage() {
         return storeNEventsTitle.getText();
     }
@@ -43,6 +45,8 @@ public class StoreNLogoutPage extends BasePage {
     }
 
     public void printStoreNames() {
+
+        // Reads and prints the name of all the stores in the city to the console
         for (WebElement storeName : storeNameList) {
             System.out.println(storeName.getText());
         }
@@ -62,6 +66,8 @@ public class StoreNLogoutPage extends BasePage {
     }
 
     public String isLogoutSuccessful() {
+        waitForElementToBeVisible(logoutSuccessfulMessage);
+        System.out.println(logoutSuccessfulMessage.getText());
         return logoutSuccessfulMessage.getText();
     }
 }

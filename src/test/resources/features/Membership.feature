@@ -1,4 +1,4 @@
-Feature: Validate Membership Functionality
+Feature: Validate Membership functionality of Shoppers Stop
 
   Scenario: Verify the First Citizen Club membership functionality
     Given user opens the website

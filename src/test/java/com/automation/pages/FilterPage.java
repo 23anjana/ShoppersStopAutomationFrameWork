@@ -14,9 +14,11 @@ public class FilterPage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement filterSearchBar;
 
+    // Finding the element using tag name
     @FindBy(tagName = "label")
     WebElement searchResult;
 
+    // Path for the names of filter options
     String xpathForFilterOptionName = "//div[text()='%s']";
 
     @FindBy(xpath = "//span[contains(text(),'Items')] ")
@@ -25,9 +27,12 @@ public class FilterPage extends BasePage {
     @FindBy(xpath = "//div[text()='Clear All']")
     WebElement clearAllButton;
 
+    // Declaration of variables
     double totalNumberItems;
     double numberItemsAfterApplyFilter;
     double numberItemsAfterClear;
+
+    // *** Method ***
 
     public void clicksOnFilterOptions(String keyName) {
         try {
@@ -90,7 +95,7 @@ public class FilterPage extends BasePage {
         }
 
         numberItemsAfterApplyFilter = Double.valueOf(totalItems.getText().replaceAll("[^0-9]", ""));
-        System.out.println("Total number of items after apply filter :" + numberItemsAfterApplyFilter);
+        System.out.println("Total number of items after apply filter: " + numberItemsAfterApplyFilter);
 
     }
 
@@ -102,6 +107,7 @@ public class FilterPage extends BasePage {
 
     public void clicksOnClearAllButton() {
         clearAllButton.click();
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -109,11 +115,14 @@ public class FilterPage extends BasePage {
         }
 
         numberItemsAfterClear = Double.valueOf(totalItems.getText().replaceAll("[^0-9]", ""));
-        System.out.println("Total number of items after clearing filter  :" + numberItemsAfterClear);
+        System.out.println("Total number of items after clearing filter: " + numberItemsAfterClear);
 
     }
 
     public boolean isAppliedFiltersCleared() {
-        return  totalNumberItems ==numberItemsAfterClear;
+
+        /* Checking if the total number of items displayed initially
+        remains the same after clearing any applied filters. */
+        return  totalNumberItems == numberItemsAfterClear;
     }
 }

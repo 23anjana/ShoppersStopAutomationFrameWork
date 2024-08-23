@@ -1,4 +1,4 @@
-Feature: Verify Order Functionality of Shoppers Stop
+Feature: Verify Order functionality of Shoppers Stop
 
   Scenario:Verify user can see correct prices in cart page
     Given user opens the website

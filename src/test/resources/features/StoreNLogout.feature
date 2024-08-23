@@ -1,4 +1,4 @@
-Feature: Validate Stores & Events and logout functionalities
+Feature: Validate Stores & Events and logout functionalities of Shoppers Stop
 
   Background:
     Given user opens the website

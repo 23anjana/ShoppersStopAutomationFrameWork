@@ -24,6 +24,8 @@ public class MembershipPage extends BasePage {
     @FindBy(xpath = "//img[@alt='near-by-store']")
     WebElement storeIcon;
 
+    //*** Methods ***
+
     public void clickOnMembershipLink() {
         membershipLink.click();
     }
@@ -34,6 +36,8 @@ public class MembershipPage extends BasePage {
 
     public void clickOnBuyNowLink() {
         buyNowLink.click();
+
+        // Switching to a new window
         switchWindow();
     }
 

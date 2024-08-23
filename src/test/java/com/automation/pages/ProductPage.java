@@ -29,9 +29,6 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//a[@data-testid='product-card']")
     List<WebElement> productImage;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/main/div[1]/div/div[3]/div/div/div[2]/div[3]/div")
-    WebElement element;
-
     @FindBy(tagName = "h1")
     WebElement productText;
 
@@ -52,6 +49,8 @@ public class ProductPage extends BasePage {
 
     @FindBy(xpath = "//div[text()='SHOP ALL LUXE BEAUTY']")
     WebElement pageTitle2;
+
+    //*** Methods ***
 
     // Checking if the first product is displayed from a list of products
     public boolean isResultPageDisplayed() {
@@ -109,6 +108,8 @@ public class ProductPage extends BasePage {
 
     public void chooseSize() {
         waitForAllElementToBeVisible(sizeOptions);
+
+        // CLicks on the first available size
         sizeOptions.get(0).click();
     }
 

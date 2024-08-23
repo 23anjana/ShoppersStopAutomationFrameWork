@@ -62,6 +62,11 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//li[contains(@class,'lg:text-xs xl:text-sm font-normal')]/a")
     List<WebElement> bottomCategoryList;
 
+    @FindBy(xpath = "//p[text()='Help & Support']")
+    WebElement helpNSupportLink;
+
+    //*** Methods ***
+
     public void openWebsite() {
 
         // Passing the Website URL from config file
@@ -86,17 +91,19 @@ public class HomePage extends BasePage {
         // Inputs the product name
         searchBar.sendKeys(productName);
 
+        // CLicks on the first search suggestion
         firstSearchOption.get(0).click();
-
-//        // Clicks on enter
-//        searchBar.sendKeys(Keys.RETURN);
     }
 
     public void trendingSearchProduct() {
+
+        // CLicks on the first trending search suggestion
         firstTrendingSearch.get(0).click();
     }
 
     public void popularBrand() {
+
+        // Clicks on the second brand
         popularBrandStop.get(1).click();
     }
 
@@ -107,8 +114,8 @@ public class HomePage extends BasePage {
 
         // Hovers on the element
         action.moveToElement(elementMan).build().perform();
-//
-//        // Clicks the product
+
+        // Clicks the product
         elementShirt.click();
 
     }
@@ -147,6 +154,7 @@ public class HomePage extends BasePage {
     }
 
     public void hoverWomenOption() {
+
         // Using Actions class to do the hover functionality
         Actions action = new Actions(driver);
 
@@ -164,5 +172,9 @@ public class HomePage extends BasePage {
 
         // Selecting a category
         bottomCategoryList.get(9).click();
+    }
+
+    public void clickOnHelpNSupport() {
+        helpNSupportLink.click();
     }
 }

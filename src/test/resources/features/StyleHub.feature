@@ -1,4 +1,4 @@
-Feature: Validate style hub functionality
+Feature: Validate style hub functionality of Shoppers Stop
 
   Background:
     Given user opens the website

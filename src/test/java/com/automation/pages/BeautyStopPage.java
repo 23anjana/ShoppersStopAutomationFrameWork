@@ -62,6 +62,8 @@ public class BeautyStopPage extends BasePage {
     @FindBy(xpath = "//img[@alt='web image SSBeauty']")
     WebElement ssBeautyLogo;
 
+    //*** Method ***
+
     public void chooseProductCategory() {
         Actions action = new Actions(driver);
 
@@ -113,10 +115,12 @@ public class BeautyStopPage extends BasePage {
     }
 
     public boolean isProductAddedToCart() {
+        waitForElementToBeVisible(addToCartSuccessMessage);
         return addToCartSuccessMessage.isDisplayed();
     }
 
     public void clickOnCartIcon() {
+        waitForElementToBeClickable(cartIcon);
         cartIcon.click();
     }
 
@@ -140,7 +144,7 @@ public class BeautyStopPage extends BasePage {
     }
 
     public boolean isProductSuccessfullyRemoved() {
-        waitForElementToBeClickable(productRemovedMessage);
+        waitForElementToBeVisible(productRemovedMessage);
         return productRemovedMessage.isDisplayed();
     }
 
