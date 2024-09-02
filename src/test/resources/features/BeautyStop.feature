@@ -11,7 +11,7 @@ Feature: Validate The Beauty Stop page functionality of Shoppers Stop
     Then verify the result page is displayed
 
   Scenario: Verify a product can be added to bag
-    When user searches for "conditioner"
+    When user searches for "beauty.stop.search"
     Then verify the result page is displayed
     When user clicks on the first product
     And user clicks on ADD TO CART button

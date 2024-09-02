@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.StyleHubPage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -62,7 +63,7 @@ public class StyleHubSteps {
 
     @When("user searches for {string} in the search bar")
     public void user_searches_for_in_the_search_bar(String searchKeyword) {
-        styleHubPage.search(searchKeyword);
+        styleHubPage.search(ConfigReader.getConfigValue(searchKeyword));
     }
 
     @Then("verify user is in the result page")

@@ -66,6 +66,12 @@ public class StoreNLogoutPage extends BasePage {
     }
 
     public String isLogoutSuccessful() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         waitForElementToBeVisible(logoutSuccessfulMessage);
         System.out.println(logoutSuccessfulMessage.getText());
         return logoutSuccessfulMessage.getText();

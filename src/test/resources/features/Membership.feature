@@ -10,6 +10,6 @@ Feature: Validate Membership functionality of Shoppers Stop
     And user clicks on the plus sign to read the description
     And user clicks on ADD TO BAG button
     When user clicks on VIEW BAG and removes card from bag
-    Then verify the bag empty message "Product removed from your cart successfully" displayed
+    Then verify the bag empty message "remove.message" displayed
     When user clicks on GO TO SHOPPING
     Then verify user is in home page

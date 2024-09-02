@@ -1,6 +1,7 @@
 package com.automation.pages;
 
 import com.automation.utils.ConfigReader;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -64,6 +65,8 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//p[text()='Help & Support']")
     WebElement helpNSupportLink;
+
+    String xpathForHoverElements = "//a[text()='%s']";
 
     //*** Methods ***
 
@@ -176,5 +179,16 @@ public class HomePage extends BasePage {
 
     public void clickOnHelpNSupport() {
         helpNSupportLink.click();
+    }
+
+    public void hoverElement(String key) {
+        String formattedXpathForHoverElements = String.format(xpathForHoverElements, key.toUpperCase());
+
+        WebElement element=driver.findElement(By.xpath(formattedXpathForHoverElements));
+        Actions action = new Actions(driver);
+
+        // Hovers on the element
+        action.moveToElement(element).build().perform();
+
     }
 }

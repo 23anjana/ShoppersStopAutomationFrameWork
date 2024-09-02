@@ -14,7 +14,7 @@ public class GiftCardPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'text-black') and text()='Gift Card/EGV']")
     WebElement giftCardTitle;
 
-    @FindBy(xpath = "//div[contains(@class,'rounded-lg')]")
+    @FindBy(xpath = "(//div[contains(@class,'rounded-lg')])[1]")
     List<WebElement> giftCardList;
 
     // Finding element using id

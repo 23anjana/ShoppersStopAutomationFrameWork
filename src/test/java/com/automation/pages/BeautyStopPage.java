@@ -110,6 +110,12 @@ public class BeautyStopPage extends BasePage {
     }
 
     public void addProductToCart() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         waitForElementToBeClickable(addToCartButton);
         addToCartButton.click();
     }

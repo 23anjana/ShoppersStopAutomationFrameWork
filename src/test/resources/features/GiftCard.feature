@@ -11,4 +11,4 @@ Feature: Validate Gift Card functionality of Shoppers Stop
     And user fills all the details and clicks on PROCEED
     Then verify the product is successfully added to the bag
     When user clicks on the remove
-    Then verify remove message "Product removed from your cart successfully" displayed
+    Then verify remove message "remove.message" displayed

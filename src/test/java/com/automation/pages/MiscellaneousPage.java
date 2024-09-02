@@ -1,6 +1,7 @@
 package com.automation.pages;
 
 import com.automation.utils.ConfigReader;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -24,7 +25,7 @@ public class MiscellaneousPage extends BasePage {
     WebElement leftArrow;
 
     @FindBy(xpath = "//a[contains(@class,'font-normal text-dividerShade')]")
-    WebElement pageNumber;
+    List<WebElement> pageNumber;
 
     @FindBy(xpath = "//div[contains(@class,'md:!grid-cols-3')]/div")
     List<WebElement> productList;
@@ -56,6 +57,13 @@ public class MiscellaneousPage extends BasePage {
     @FindBy(xpath = "//img[@alt='plus_icon']")
     List<WebElement> plusSignOfQuery;
 
+    String xpathForLetter = "//span[text()='%s']";
+
+    String xpathForBrand = "//div[@id='%s']//a";
+
+    @FindBy(xpath = "//button[contains(@class,'w-auto rounded-md text-sm capitalize')]")
+    WebElement brandName;
+
     // *** Methods ***
 
     public void scrollDownAndClickOnUpArrow() {
@@ -72,21 +80,51 @@ public class MiscellaneousPage extends BasePage {
     }
 
     public void clickOnRightArrow() {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        waitForElementToBeClickable(rightArrow);
         rightArrow.click();
     }
 
     public boolean isOnNextPageOfResult() {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        waitForElementToBeVisible(pageNumberInBoldLetter);
         return pageNumberInBoldLetter.isDisplayed();
     }
 
     public void clickOnLeftArrow() {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         waitForElementToBeClickable(leftArrow);
         leftArrow.click();
     }
 
     public void clickOnDesiredPage() {
-        waitForElementToBeClickable(pageNumber);
-        pageNumber.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        waitForElementToBeClickable(pageNumber.get(3));
+        pageNumber.get(3).click();
     }
 
     public void clicksOnTheProduct() {
@@ -104,7 +142,7 @@ public class MiscellaneousPage extends BasePage {
         pinCodeField.click();
 
         // Inputs pin code from config file
-        pinCodeField.sendKeys(ConfigReader.getConfigValue("pinCode"));
+        pinCodeField.sendKeys(ConfigReader.getConfigValue("pin.code"));
 
         // Clicks on check button
         checkButton.click();
@@ -150,5 +188,21 @@ public class MiscellaneousPage extends BasePage {
 
         // Clicks on the third question displayed
         plusSignOfQuery.get(2).click();
+    }
+
+    public void chooseLetter(String key) {
+        WebElement brandsFirstLetter = driver.findElement(By.xpath(String.format(xpathForLetter, key)));
+        brandsFirstLetter.click();
+    }
+
+    public void chooseBrand(String key) {
+        List<WebElement>  chooseBrand = driver.findElements(By.xpath(String.format(xpathForBrand,key.toLowerCase())));
+        chooseBrand.get(1).click();
+    }
+
+    public boolean verifyBrandPageDisplayed(String key) {
+        String firstLetter = String.valueOf(brandName.getText().charAt(0));
+        System.out.println(firstLetter);
+        return  firstLetter.equals(key);
     }
 }

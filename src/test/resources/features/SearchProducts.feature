@@ -5,7 +5,7 @@ Feature: Validate search functionality of Shoppers Stop
     Then verify user is on home page
 
   Scenario: Verify user can search product through search bar
-    When user enters "Perfumes" in the search bar
+    When user enters "search.product.keyword" in the search bar
     Then verify result page is displayed
 
   Scenario: Verify user can search product from the TRENDING SEARCH section

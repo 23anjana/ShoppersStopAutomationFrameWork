@@ -23,7 +23,7 @@ Feature: Validate style hub functionality of Shoppers Stop
     Then verify user is on style hub page
 
   Scenario: Verify guides can be searched using search bar
-    When user searches for "decor ideas" in the search bar
+    When user searches for "style.hub.search" in the search bar
     Then verify user is in the result page
     When user clicks on the first link
     Then verify user is on the guide description page

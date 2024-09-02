@@ -23,7 +23,7 @@ public class HomeSteps {
 
     @When("user enters {string} in the search bar")
     public void user_enters_in_the_search_bar(String searchKeyword) {
-        homePage.searchProductFromSearchBar(searchKeyword);
+        homePage.searchProductFromSearchBar(ConfigReader.getConfigValue(searchKeyword));
     }
 
     @When("user clicks on the search bar")
@@ -70,5 +70,10 @@ public class HomeSteps {
     @When("user hovers over WOMEN and choose Ethnic Dresses option")
     public void userHoversOverWOMENAndChooseEthnicDressesOption(){
         homePage.hoverWomenOption();
+    }
+
+    @When("user hovers over {string}")
+    public void userHoversOver(String key) {
+        homePage.hoverElement(key);
     }
 }

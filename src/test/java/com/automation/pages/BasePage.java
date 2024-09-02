@@ -90,4 +90,16 @@ public class BasePage {
     public void waitForAllElementToBeVisible(List<WebElement> elements) {
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
+
+    public void scrollByDistance(int distance){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript(String.format("window.scrollBy(0,%d)", distance));
+    }
+    public void scrollAndWaitElementVisible(WebElement element){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        int scrollAmount = 10;
+        while (!(element.isDisplayed())) {
+            javascriptExecutor.executeScript("window.scrollBy(0, arguments[0]);", scrollAmount);
+        }
+    }
 }

@@ -18,7 +18,7 @@ Feature: Validate Filter functionality of Shoppers Stop
       | myshka        |
 
   Scenario Outline: Verify user can filter product using filter categories
-    When  user enters "Kurta" in the search bar
+    When  user enters "filter.product_1" in the search bar
     Then  verify result page is displayed
     When  user clicks on categories "<Filters>" under filter options
     And   user search filter option "<Subcategory>" in the filter categories search bar
@@ -32,7 +32,7 @@ Feature: Validate Filter functionality of Shoppers Stop
       | Categories   |    Clothing    |
 
     Scenario: Verify user can clear all applied filters
-      When  user enters "Watches" in the search bar
+      When  user enters "filter.product_2" in the search bar
       Then  verify result page is displayed
       When  user clicks on categories "Product Type" under filter options
       And   user search filter option "Chronograph" in the filter categories search bar

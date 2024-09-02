@@ -1,10 +1,10 @@
 package com.automation.steps;
 
 import com.automation.pages.GiftCardPage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GiftCardSteps {
 
@@ -48,6 +48,6 @@ public class GiftCardSteps {
 
     @Then("verify remove message {string} displayed")
     public void verifyRemoveMessageDisplayed(String message) {
-        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), message);
+        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), ConfigReader.getConfigValue(message));
     }
 }

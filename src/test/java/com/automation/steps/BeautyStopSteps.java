@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.BeautyStopPage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -21,7 +22,7 @@ public class BeautyStopSteps {
 
     @When("user searches for {string}")
     public void user_searches_for(String product) {
-        beautyStopPage.searchProduct(product);
+        beautyStopPage.searchProduct(ConfigReader.getConfigValue(product));
     }
 
     @Then("verify the result page is displayed")

@@ -2,6 +2,7 @@ package com.automation.steps;
 
 import com.automation.pages.GiftCardPage;
 import com.automation.pages.MembershipPage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -44,7 +45,7 @@ public class MembershipSteps {
 
     @Then("verify the bag empty message {string} displayed")
     public void verifyTheBagEmptyMessageDisplayed(String removeMessage) {
-        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), removeMessage);
+        Assert.assertEquals(giftCardPage.isRemoveSuccessful(), ConfigReader.getConfigValue(removeMessage));
     }
 
     @When("user clicks on GO TO SHOPPING")
