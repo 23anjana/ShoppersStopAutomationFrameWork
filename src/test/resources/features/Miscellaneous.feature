@@ -42,3 +42,9 @@ Feature: Validate different features of Shoppers Stop
     Then display the result onto the console
     When user clicks on any of the questions displayed
     Then display the result onto the console
+
+  Scenario: Verify user can choose brands in alphabetical order
+    When user hovers over "Brands"
+    And  user choose letter "C" under brands name
+    And  user chooses a brand staring with letter "C"
+    Then verify product page based on corresponding brand starting with "C" is displayed

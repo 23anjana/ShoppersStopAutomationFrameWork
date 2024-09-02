@@ -99,4 +99,18 @@ public class MiscellaneousSteps {
         miscellaneousPage.clickOnPlusSignForQueryDetail();
     }
 
+    @And("user choose letter {string} under brands name")
+    public void userChooseLetterUnderBrandsName(String key) {
+        miscellaneousPage.chooseLetter(key);
+    }
+
+    @And("user chooses a brand staring with letter {string}")
+    public void userChoosesABrandStaringWithLetter(String key) {
+        miscellaneousPage.chooseBrand(key);
+    }
+
+    @Then("verify product page based on corresponding brand starting with {string} is displayed")
+    public void verifyProductPageBasedOnCorrespondingBrandStartingWithIsDisplayed(String key) {
+        Assert.assertTrue(miscellaneousPage.verifyBrandPageDisplayed(key));
+    }
 }

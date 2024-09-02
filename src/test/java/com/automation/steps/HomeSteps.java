@@ -71,4 +71,9 @@ public class HomeSteps {
     public void userHoversOverWOMENAndChooseEthnicDressesOption(){
         homePage.hoverWomenOption();
     }
+
+    @When("user hovers over {string}")
+    public void userHoversOver(String key) {
+        homePage.hoverElement(key);
+    }
 }
