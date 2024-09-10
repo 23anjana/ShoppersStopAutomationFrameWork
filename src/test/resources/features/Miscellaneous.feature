@@ -45,6 +45,6 @@ Feature: Validate different features of Shoppers Stop
 
   Scenario: Verify user can choose brands in alphabetical order
     When user hovers over "Brands"
-    And  user choose letter "C" under brands name
-    And  user chooses a brand staring with letter "C"
-    Then verify product page based on corresponding brand starting with "C" is displayed
+    And  user choose letter "brand.letter" under brands name
+    And  user chooses a brand staring with letter "brand.letter"
+    Then verify product page based on corresponding brand starting with "brand.letter" is displayed

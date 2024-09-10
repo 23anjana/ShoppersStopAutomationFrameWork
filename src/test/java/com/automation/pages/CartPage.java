@@ -19,6 +19,10 @@ public class CartPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'₹')]")
     List<WebElement> productOriginalPrices;
 
+    // Finding list of prices
+    @FindBy(xpath = "//div[contains(@class,'text-xs font-medium !leading-4 text-black md:text-base')]")
+    List<WebElement> priceList;
+
     // Finding the following sibling
     @FindBy(xpath = "//span[contains(text(),'₹')]/following-sibling::span")
     List<WebElement> discountPercentages;
@@ -45,27 +49,52 @@ public class CartPage extends BasePage {
         double totalPayableAmount = 0;
         double totalSavings;
 
-        // Calculating Original price without adding discount
-        for (WebElement price : productOriginalPrices) {
-            System.out.println("Original Prices :" + price.getText().replace("₹", " "));
-            totalItemPriceWithoutDiscount = totalItemPriceWithoutDiscount + Double.parseDouble(price.getText().replace("₹", " "));
+
+        for (WebElement p : priceList) {
+            if (!p.getText().contains("OFF")) {
+                System.out.println("Original Prices :" + p.getText().replace("₹", " "));
+                totalItemPriceWithoutDiscount = totalItemPriceWithoutDiscount + Double.parseDouble(p.getText().replace("₹", " "));
+            } else {
+                for (WebElement price : productOriginalPrices) {
+                    System.out.println("Original Prices :" + price.getText().replace("₹", " "));
+                    totalItemPriceWithoutDiscount = totalItemPriceWithoutDiscount + Double.parseDouble(price.getText().replace("₹", " "));
+                }
+            }
         }
-        System.out.println("Total price without discount: " + totalItemPriceWithoutDiscount);
 
         List<Double> discountedPriceList = new ArrayList<>();
 
         // Calculate price after applying discount offer
-        for (int i = 0; i < productOriginalPrices.size(); i++) {
 
+        for (int i = 0; i < priceList.size() - 1; i++) {
+            double price = 0;
             //Original price
-            double price = Double.parseDouble(productOriginalPrices.get(i).getText().replace("₹", " "));
+            for (WebElement p : priceList) {
+                if (!p.getText().contains("OFF")) {
+                    price = Double.parseDouble(p.getText().replace("₹", " "));
+
+                } else {
+                    for (WebElement pi : productOriginalPrices) {
+                        price = Double.parseDouble(pi.getText().replace("₹", " "));
+                    }
+                }
+            }
 
             // Discount percentage
-            double discount = Double.parseDouble(discountPercentages.get(i).getText().replaceAll("[^\\d]", ""));
 
-            double discountedPrice = price - (price * (discount / 100));
-            String formattedPrice = String.format("%.2f", discountedPrice);
-            discountedPriceList.add(Double.valueOf(formattedPrice));
+            for (WebElement p : priceList) {
+                double discount;
+                double discountedPrice;
+                if (!p.getText().contains("OFF")) {
+                    discountedPrice = Double.parseDouble(p.getText().replace("₹", " "));
+                } else {
+                    discount = Double.parseDouble(discountPercentages.get(i).getText().replaceAll("[^\\d]", ""));
+                    discountedPrice = price - (price * (discount / 100));
+                }
+                String formattedPrice = String.format("%.2f", discountedPrice);
+                discountedPriceList.add(Double.valueOf(formattedPrice));
+
+            }
         }
         System.out.println("Discounted Price List: " + discountedPriceList);
 
